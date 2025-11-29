@@ -20,8 +20,9 @@ import {
 } from "../redux/actions/actions";
 import { selectDrawnEntries, selectStoreState } from "../redux/reducer";
 import readXlsxFile from "read-excel-file";
-import { organizeFileData } from "../utilities/utility";
+import { getRaffleEntries } from "../utilities/utility";
 import { DialogBox } from "./DialogBox";
+import { FileData } from "../interfaces/types";
 
 type HeaderProps = {
   startRaffle: () => number | undefined;
@@ -54,25 +55,25 @@ const Header = ({ activeRaffle, startRaffle, raffleData }: HeaderProps) => {
     readXlsxFile(event.target.files[0]).then((data) => {
       let newFileData = data.slice(1);
       let newRaffleList = data[0].slice(1);
-      let newRaffleData = organizeFileData(
-        newFileData,
+      let newRaffleData = getRaffleEntries(
+        newFileData as FileData,
         newRaffleList as string[]
       );
       console.log(
         "data",
         newFileData,
-        "raffleList",
+        "raffleNameList",
         newRaffleList,
         "raffleData",
         newRaffleData
       );
 
       let newStoreData = {
-        originalFileData: newFileData,
-        currentFileData: newFileData,
+        originalFileData: newFileData as FileData,
+        currentFileData: newFileData as FileData,
         currentRaffle: newRaffleList[0] as string,
         activeRaffleData: newRaffleData[newRaffleList[0] as string],
-        raffleList: newRaffleList as string[],
+        raffleNameList: newRaffleList as string[],
         raffleData: newRaffleData,
       };
       dispatch(updateStore(newStoreData));

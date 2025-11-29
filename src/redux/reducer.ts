@@ -3,9 +3,10 @@ import { Actions } from "./actions/actions";
 
 const defaultState: StoreState = {
   originalFileData: [],
+  currentFileData: [],
   raffleData: {},
   currentRaffle: "No Raffle Selected",
-  raffleList: [],
+  raffleNameList: [],
   activeRaffleData: [],
   drawnEntries: [],
   isRaffleActive: false,
@@ -55,7 +56,7 @@ export const selectOriginalFileData = (state: StoreState) =>
 export const selectCurrentFileData = (state: StoreState) =>
   state.currentFileData;
 export const selectRaffleData = (state: StoreState) => state.raffleData;
-export const selectRaffleList = (state: StoreState) => state.raffleList;
+export const selectRaffleNameList = (state: StoreState) => state.raffleNameList;
 export const selectCurrentRaffle = (state: StoreState) => state.currentRaffle;
 export const selectActiveRaffleData = (state: StoreState) =>
   state.activeRaffleData;

@@ -1,4 +1,4 @@
-import { RaffleEntriesType } from "../interfaces/types";
+import { FileData, RaffleEntriesType } from "../interfaces/types";
 
 const getPerfectSquareArray = () => {
   let squares = [];
@@ -28,17 +28,29 @@ export const getGridDimensions = (num: number, isLandscape = true) => {
   return dimensions;
 };
 
-export const organizeFileData = (fileData: any, raffleList: string[]) => {
-  if (!raffleList) return {};
+/** Returns RaffleEntries Object -->
+ *  @returns {RaffleEntriesType} {
+ * raffle1: 'John Doe-0', 'John Doe-1', 'Jane Doe-0',
+ *
+ * raffle2: 'John Doe-0', 'John Doe-1', 'Jane Doe-0'
+ *  } */
+export const getRaffleEntries = (
+  fileData: FileData,
+  raffleNameList: string[]
+) => {
+  if (!raffleNameList) {
+    console.error("No Raffle List Found");
+    return {};
+  }
   let raffleEntries: RaffleEntriesType = {};
-  raffleList.map((raffle, index) => {
+  raffleNameList.map((raffle, index) => {
     if (!fileData) return;
     let raffleEntryArray = [];
     let fileLength = fileData?.length ?? 0;
 
     for (let rowIndex = 0; rowIndex < fileLength; rowIndex++) {
       let name = fileData[rowIndex][0];
-      let numEntries = fileData[rowIndex][index + 1];
+      let numEntries = fileData[rowIndex][index + 1] as number;
       for (let entry = 0; entry < numEntries; entry++) {
         raffleEntryArray.push(`${name}-${entry}`);
       }
@@ -46,7 +58,6 @@ export const organizeFileData = (fileData: any, raffleList: string[]) => {
 
     raffleEntries[raffle as string] = raffleEntryArray;
   });
-  console.log("entries", raffleEntries);
   return raffleEntries;
 };
 

@@ -91,7 +91,7 @@ root {
   justify-content: center;
   vertical-align: center;
   font-size: 20cqw;
-  border: 2px solid white;
+  border: 1px solid white;
   background-color: #1e1e1e;
   color: #fff;
   box-sizing: border-box;
@@ -101,15 +101,19 @@ root {
 }
 
 .box-enabled {
-  border: 2px solid white;
+  border: 1px solid rgb(255, 255, 255, 0.1);
   background-color: #1e1e1e;
   color: #fff;
 }
 
 .box-disabled {
-  border: 2px solid rgb(66, 14, 14);
-  background-color: #a8a8a8;
-  color: #fff;
+  border: 0px solid rgb(66, 14, 14);
+  background-color: rgba(0, 0, 0, 1);
+  color: rgb(255, 255, 255, 1);
+
+  /* Transparency */
+  /* background-color: rgba(0,0,0,0.5); */
+  /* color: rgba(0,0,0,0.8); */
 }
 
 .dialog {
@@ -120,5 +124,5 @@ root {
   text-align: center;
   white-space: pre-line;
   padding: 25px 25px 25px 25px;
-  border: 2px solid white;
+  /* border: 2px solid white; */
 }

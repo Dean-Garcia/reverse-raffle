@@ -3,7 +3,7 @@ export type StoreState = {
   currentFileData: FileData;
   raffleData: RaffleData;
   currentRaffle: string;
-  raffleList: string[];
+  raffleNameList: string[];
   activeRaffleData: string[];
   drawnEntries: string[];
   isRaffleActive: boolean;
@@ -22,8 +22,8 @@ export type RaffleData = {
   [key: string]: string[];
 };
 
-export type FileData = (number | string)[][];
+export type FileData = [string, ...number[]][];
 
 export type RaffleEntriesType = {
-  [key: string]: any;
+  [key: string]: string[];
 };

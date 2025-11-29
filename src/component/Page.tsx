@@ -11,7 +11,7 @@ import {
   selectIsRaffleActive,
   selectWinners,
   selectCurrentFileData,
-  selectRaffleList,
+  selectRaffleNameList,
 } from "../redux/reducer";
 import {
   updateActiveRaffleData,
@@ -25,7 +25,7 @@ import { useState } from "react";
 import { WinnerDialogBox } from "./WinnerDialogBox";
 import {
   getFileArrayIndexWithName,
-  organizeFileData,
+  getRaffleEntries,
 } from "../utilities/utility";
 
 type PageProps = {};
@@ -41,7 +41,7 @@ export default function Page({}: PageProps) {
   const raffleData = useSelector(selectRaffleData);
   const winners = useSelector(selectWinners);
   const currentFileData = useSelector(selectCurrentFileData);
-  const raffleList = useSelector(selectRaffleList);
+  const raffleNameList = useSelector(selectRaffleNameList);
 
   const [isWinOpen, setIsWinOpen] = useState(false); // for win screen popup
 
@@ -74,6 +74,36 @@ export default function Page({}: PageProps) {
     dispatch(updateIsRaffleActive(true));
     let newDrawnEntries = [...drawnEntries];
     let newActiveRaffleData = [...activeRaffleData];
+
+    // Only One Entry in Raffle, Pick Winner Immediately
+    if (newActiveRaffleData.length === 1) {
+      let winnerPayload = { [currentRaffle]: newActiveRaffleData[0] };
+
+      // remove winner from file data
+      let newCurrentFileData = [...currentFileData];
+      const winnerName = newActiveRaffleData[0].slice(0, -2);
+      const winnerIndex = getFileArrayIndexWithName(
+        winnerName,
+        newCurrentFileData
+      );
+      newCurrentFileData.splice(winnerIndex, 1);
+      const newRaffleData = getRaffleEntries(
+        newCurrentFileData,
+        raffleNameList
+      );
+      dispatch(
+        updateStore({
+          isRaffleActive: false,
+          winners: winnerPayload,
+          currentFileData: newCurrentFileData,
+          raffleData: newRaffleData,
+        })
+      );
+      setTimeout(() => {
+        setIsWinOpen(true);
+      }, 1000);
+      return;
+    }
 
     let delay = 100;
     let interval: any;
@@ -117,9 +147,10 @@ export default function Page({}: PageProps) {
         );
         newCurrentFileData.splice(winnerIndex, 1);
         console.log("length", newCurrentFileData.length);
-        const newRaffleData = organizeFileData(newCurrentFileData, raffleList);
-        // dispatch(updateIsRaffleActive(false));
-        // dispatch(updateWinners(payload));
+        const newRaffleData = getRaffleEntries(
+          newCurrentFileData,
+          raffleNameList
+        );
         dispatch(
           updateStore({
             isRaffleActive: false,
