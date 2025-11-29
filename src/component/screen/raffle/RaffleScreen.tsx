@@ -27,6 +27,7 @@ import {
   getFileArrayIndexWithName,
   getRaffleEntries,
 } from "../../../utilities/utility";
+import OptionsScreen from "../options/OptionsScreen";
 
 type PageProps = {};
 
@@ -192,19 +193,20 @@ export default function Page({}: PageProps) {
   };
 
   return (
-    <div className="raffle-screen">
-      <Header
-        activeRaffle={currentRaffle}
-        startRaffle={startRaffle}
-        raffleData={raffleData}
-      />
-      <InfoBoxContainer activeRaffle={currentRaffle} raffleData={raffleData} />
-      <Grid />
-      <WinnerDialogBox
-        open={isWinOpen}
-        onClose={handleClose}
-        text={getWinnerText()}
-      />
-    </div>
+    <OptionsScreen />
+    // <div className="raffle-screen">
+    //   <Header
+    //     activeRaffle={currentRaffle}
+    //     startRaffle={startRaffle}
+    //     raffleData={raffleData}
+    //   />
+    //   <InfoBoxContainer activeRaffle={currentRaffle} raffleData={raffleData} />
+    //   <Grid />
+    //   <WinnerDialogBox
+    //     open={isWinOpen}
+    //     onClose={handleClose}
+    //     text={getWinnerText()}
+    //   />
+    // </div>
   );
 }
