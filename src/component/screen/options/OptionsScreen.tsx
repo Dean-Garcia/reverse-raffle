@@ -1,7 +1,7 @@
 import "../../../styles.css";
 import Grid from "../Grid";
-import InfoBoxContainer from "../Raffle/InfoBoxContainer";
-import Header from "../Raffle/Header";
+import InfoBoxContainer from "../raffle/InfoBoxContainer";
+import Header from "../raffle/Header";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {
   selectActiveRaffleData,
@@ -21,10 +21,14 @@ import {
   updateWinners,
 } from "../../../redux/actions/actions";
 import { useState } from "react";
+import { Button, Dialog } from "@mui/material";
 
-type PageProps = {};
+type OptionsProps = {
+  open: boolean;
+  onClose: () => void;
+};
 
-export default function OptionsPage({}: PageProps) {
+export default function OptionsScreen({ open, onClose }: OptionsProps) {
   const dispatch = useDispatch();
   const currentRaffle = useSelector(selectCurrentRaffle);
   const activeRaffleData = useSelector(selectActiveRaffleData, {
@@ -39,5 +43,16 @@ export default function OptionsPage({}: PageProps) {
 
   const [isWinOpen, setIsWinOpen] = useState(false); // for win screen popup
 
-  return <div className="page"></div>;
+  const handleTest = () => {
+    console.log("hi");
+  };
+
+  return (
+    <Dialog className="options-screen" onClose={onClose} open={open}>
+      <div className="test">awefawef</div>;
+      <Button variant="contained" onClick={handleTest}>
+        Start Raffle
+      </Button>
+    </Dialog>
+  );
 }

@@ -192,7 +192,7 @@ export default function Page({}: PageProps) {
   };
 
   return (
-    <div className="page">
+    <div className="raffle-screen">
       <Header
         activeRaffle={currentRaffle}
         startRaffle={startRaffle}

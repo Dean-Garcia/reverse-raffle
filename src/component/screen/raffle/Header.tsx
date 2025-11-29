@@ -23,6 +23,7 @@ import readXlsxFile from "read-excel-file";
 import { getRaffleEntries } from "../../../utilities/utility";
 import { DialogBox } from "../../DialogBox";
 import { FileData } from "../../../interfaces/types";
+import OptionsScreen from "../options/OptionsScreen";
 
 type HeaderProps = {
   startRaffle: () => number | undefined;
@@ -134,7 +135,7 @@ const Header = ({ activeRaffle, startRaffle, raffleData }: HeaderProps) => {
       <Button variant="contained" onClick={optionsClick}>
         Options
       </Button>
-      <DialogBox open={open} onClose={handleClose} text={"OPTIONS (WIP)"} />
+      <OptionsScreen open={open} onClose={handleClose} />
     </div>
   );
 };

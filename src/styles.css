@@ -12,7 +12,7 @@ root {
   text-align: center;
 }
 
-.page {
+.raffle-screen {
   background-color: aqua;
   height: 100%;
   width: 100%;
@@ -30,6 +30,19 @@ root {
     "info-box grid grid grid grid grid grid grid grid"
     "info-box grid grid grid grid grid grid grid grid"
     "info-box grid grid grid grid grid grid grid grid";
+}
+
+.options-screen {
+  background-color: red;
+  color: green;
+  height: 100vh;
+  width: 100vw;
+}
+
+.test {
+  background-color: green;
+  height: 500px;
+  width: 500px;
 }
 
 .header {
