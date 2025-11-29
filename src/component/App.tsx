@@ -1,5 +1,5 @@
 import "../styles.css";
-import Page from "./Page";
+import Page from "./Screens/Raffle/RaffleScreen";
 
 export default function App() {
   return (
