@@ -1,29 +1,25 @@
-import { Button, Checkbox } from "@mui/material";
+import { Checkbox, TextField } from "@mui/material";
 import { useState } from "react";
 
-type ButtonSettingComponent = {
+type TextSettingComponent = {
   settingTitle: string;
   settingExplanationText: string;
-  buttonText: string;
-  handleClick: () => void;
+  handleChange: () => void;
+  text: string;
 };
 
-export default function ButtonSetting({
+export default function TextSetting({
   settingTitle,
   settingExplanationText,
-  buttonText,
-  handleClick,
-}: ButtonSettingComponent) {
-  const [isChecked, setIsChecked] = useState(true);
+  handleChange,
+}: TextSettingComponent) {
   return (
     <div style={{ display: "flex", flexFlow: "column", padding: "10px" }}>
       <div style={{ textAlign: "left", color: "white", fontSize: "1.5rem" }}>
         {settingTitle}
       </div>
-      <div style={{ display: "flex", flexFlow: "row", gap: "10px" }}>
-        <Button variant="contained" onClick={handleClick}>
-          {buttonText}
-        </Button>
+      <div style={{ display: "flex", flexFlow: "row" }}>
+        <TextField onBlur={(event) => handleChange} />
         <div style={{ alignContent: "center", color: "white" }}>
           {settingExplanationText}
         </div>

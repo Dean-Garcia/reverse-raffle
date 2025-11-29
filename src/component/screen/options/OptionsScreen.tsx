@@ -47,6 +47,8 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import InitializeOptions from "./InitializeOptions";
+import RaffleConfiguration from "./RaffleConfigurationOptions";
+import RaffleConfigurationOptions from "./RaffleConfigurationOptions";
 
 export const menuList = [
   {
@@ -166,11 +168,7 @@ export default function OptionsScreen({ open, onClose }: OptionsProps) {
       case Options.initialize:
         return <InitializeOptions />;
       case Options.raffleConfig:
-        return (
-          <div
-            style={{ backgroundColor: "red", height: "100%", width: "100%" }}
-          ></div>
-        );
+        return <RaffleConfigurationOptions raffleNameList={raffleNameList} />;
       case Options.raffleSettings:
         break;
       default:

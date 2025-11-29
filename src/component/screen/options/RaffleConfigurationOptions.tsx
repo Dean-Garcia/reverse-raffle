@@ -15,21 +15,20 @@ import MailIcon from "@mui/icons-material/Mail";
 import BooleanSetting from "./renderers/BooleanSetting";
 import ButtonSetting from "./renderers/ButtonSetting";
 import DropdownSetting from "./renderers/DropdownSetting";
-import TextSetting from "./renderers/TextSetting";
+import RaffleConfig from "./renderers/RaffleConfig";
 
-const drawerWidth = 240;
+type RaffleConfigurationOptionsComponent = {
+  raffleNameList: string[];
+};
 
-export default function InitializeOptions() {
-  const handleChange = () => {};
+export default function RaffleConfigurationOptions({
+  raffleNameList,
+}: RaffleConfigurationOptionsComponent) {
   return (
     <div className="options-main">
-      <ButtonSetting
-        settingTitle="Upload Raffle File"
-        settingExplanationText="Upload your raffle file here"
-        buttonText="Upload"
-        handleClick={handleChange}
-        isUploadFile={true}
-      />
+      <RaffleConfig />
+      <RaffleConfig />
+      <RaffleConfig />
     </div>
   );
 }
