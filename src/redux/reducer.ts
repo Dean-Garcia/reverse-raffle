@@ -7,6 +7,7 @@ const defaultState: StoreState = {
   raffleData: {},
   currentRaffle: "No Raffle Selected",
   raffleNameList: [],
+  raffleConfigs: {},
   activeRaffleData: [],
   drawnEntries: [],
   isRaffleActive: false,
@@ -28,6 +29,8 @@ export const reducer = (state = defaultState, action: any) => {
       return { ...state, activeRaffleData: [...payload] };
     case Actions.UPDATE_RAFFLE_DATA:
       return { ...state, raffleData: { ...payload } };
+    case Actions.UPDATE_RAFFLE_CONFIGS:
+      return { ...state, raffleConfigs: { ...payload } };
     case Actions.UPDATE_CURRENT_RAFFLE:
       const newActiveRaffleData = [...state.raffleData[payload]];
       return {
@@ -65,3 +68,4 @@ export const selectIsRaffleActive = (state: StoreState) => state.isRaffleActive;
 export const selectOptions = (state: StoreState) => state.options;
 export const selectWinners = (state: StoreState) => state.winners;
 export const selectStoreState = (state: StoreState) => state;
+export const selectRaffleConfigs = (state: StoreState) => state.raffleConfigs;

@@ -44,7 +44,8 @@ export default function Page({}: PageProps) {
   const currentFileData = useSelector(selectCurrentFileData);
   const raffleNameList = useSelector(selectRaffleNameList);
 
-  const [isWinOpen, setIsWinOpen] = useState(false); // for win screen popup
+  const [isWinnerDialogOpen, setIsWinnerDialogOpen] = useState(false); // for win screen popup
+  const [isOptionsOpen, setIsOptionsOpen] = useState(false); // for options
 
   // Random Number Generator for raffle. Max is excluded.
   const randomIntFromInterval = (min: number, max: number) => {
@@ -101,7 +102,7 @@ export default function Page({}: PageProps) {
         })
       );
       setTimeout(() => {
-        setIsWinOpen(true);
+        setIsWinnerDialogOpen(true);
       }, 1000);
       return;
     }
@@ -161,7 +162,7 @@ export default function Page({}: PageProps) {
           })
         );
         setTimeout(() => {
-          setIsWinOpen(true);
+          setIsWinnerDialogOpen(true);
         }, 1000);
         return;
       }
@@ -177,7 +178,15 @@ export default function Page({}: PageProps) {
 
   // Close of winner dialog box
   const handleClose = () => {
-    setIsWinOpen(false);
+    setIsWinnerDialogOpen(false);
+  };
+
+  const toggleWinnnerDialogBox = () => {
+    setIsWinnerDialogOpen(!isWinnerDialogOpen);
+  };
+
+  const toggleOptionsMenu = () => {
+    setIsOptionsOpen(!isOptionsOpen);
   };
 
   const getWinnerText = () => {
@@ -193,20 +202,21 @@ export default function Page({}: PageProps) {
   };
 
   return (
-    <OptionsScreen />
-    // <div className="raffle-screen">
-    //   <Header
-    //     activeRaffle={currentRaffle}
-    //     startRaffle={startRaffle}
-    //     raffleData={raffleData}
-    //   />
-    //   <InfoBoxContainer activeRaffle={currentRaffle} raffleData={raffleData} />
-    //   <Grid />
-    //   <WinnerDialogBox
-    //     open={isWinOpen}
-    //     onClose={handleClose}
-    //     text={getWinnerText()}
-    //   />
-    // </div>
+    <div className="raffle-screen">
+      <Header
+        activeRaffle={currentRaffle}
+        startRaffle={startRaffle}
+        raffleData={raffleData}
+        toggleOptionsMenu={toggleOptionsMenu}
+      />
+      <InfoBoxContainer activeRaffle={currentRaffle} raffleData={raffleData} />
+      <Grid />
+      <WinnerDialogBox
+        open={isWinnerDialogOpen}
+        onClose={toggleWinnnerDialogBox}
+        text={getWinnerText()}
+      />
+      {isOptionsOpen ? <OptionsScreen onClose={toggleOptionsMenu} /> : null}
+    </div>
   );
 }

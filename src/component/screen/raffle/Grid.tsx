@@ -9,8 +9,10 @@ import _ from "lodash";
 import { shallowEqual, useSelector } from "react-redux";
 import {
   selectActiveRaffleData,
+  selectCurrentRaffle,
   selectDrawnEntries,
   selectOptions,
+  selectRaffleConfigs,
   selectStoreState,
   selectWinners,
 } from "../../../redux/reducer";
@@ -22,6 +24,7 @@ const Grid = ({}: GridProps) => {
   const activeRaffleData = useSelector(selectActiveRaffleData, {
     equalityFn: shallowEqual,
   });
+  const currentRaffle = useSelector(selectCurrentRaffle);
   const drawnEntries = useSelector(selectDrawnEntries);
   const options = useSelector(selectOptions);
   const isShuffleEnabled = useSelector(selectOptions).isShuffleEnabled; // When enabled, shuffle boxes instead of in index order
@@ -32,6 +35,11 @@ const Grid = ({}: GridProps) => {
   }, [numEntries]);
   const gridArea = gridDimensions.column * gridDimensions.row;
   const dummySquares = gridArea - numEntries; // Squares left to complete rectangle display
+  const raffleConfig = useSelector(selectRaffleConfigs, {
+    equalityFn: shallowEqual,
+  });
+  const activeRaffleConfig = raffleConfig[currentRaffle];
+  console.log("rafflceConfigs", raffleConfig, activeRaffleConfig);
 
   // Create gridbox components for grid
   const createGridBoxes = (numBoxes: number) => {
@@ -82,8 +90,10 @@ const Grid = ({}: GridProps) => {
     setGridBoxes(createGridBoxes(numEntries));
   }, [numEntries]);
 
+  const backgroundImage = undefined;
+
   return (
-    <div className="grid-staging">
+    <div className="grid-staging" style={{ backgroundImage: backgroundImage }}>
       <div
         className="grid"
         style={{ gridTemplateColumns: `repeat(${gridDimensions.column}, 1fr)` }}

@@ -9,7 +9,8 @@ import {
 export const Actions = {
   UPDATE_ORIGINAL_FILE_DATA: "update-original-file-data",
   UPDATE_CURRENT_FILE_DATA: "update-current-file-data",
-  UPDATE_RAFFLE_DATA: "udpdate-raffle-data",
+  UPDATE_RAFFLE_DATA: "update-raffle-data",
+  UPDATE_RAFFLE_CONFIGS: "update-raffle-configs",
   UPDATE_CURRENT_RAFFLE: "update-current-raffle",
   UPDATE_ACTIVE_RAFFLE_DATA: "update-active-raffle-data",
   UPDATE_DRAWN_ENTRIES: "update-drawn-entries",
@@ -35,6 +36,11 @@ export const updateCurrentRaffle = (payload: string): DefaultPayload => ({
 });
 
 export const updateActiveRaffleData = (payload: string[]): DefaultPayload => ({
+  type: Actions.UPDATE_ACTIVE_RAFFLE_DATA,
+  payload: payload,
+});
+
+export const updateRaffleConfigs = (payload: string[]): DefaultPayload => ({
   type: Actions.UPDATE_ACTIVE_RAFFLE_DATA,
   payload: payload,
 });

@@ -7,8 +7,8 @@ import Gridbox from "../../Raffle/Gridbox";
 
 type RaffleConfigComponent = {
   raffleName: string;
-  backgroundPicture: string;
-  handleChange: () => void;
+  backgroundPicture?: string;
+  handleChange?: () => void;
 };
 
 export default function RaffleConfig({
@@ -16,7 +16,6 @@ export default function RaffleConfig({
   backgroundPicture,
   handleChange,
 }: RaffleConfigComponent) {
-  const [isChecked, setIsChecked] = useState(true);
   const backgroundColor = undefined;
   const fontColor = undefined;
 

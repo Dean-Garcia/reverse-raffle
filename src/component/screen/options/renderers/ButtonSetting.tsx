@@ -3,7 +3,10 @@ import { useState } from "react";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import styled from "@emotion/styled";
 import readXlsxFile from "read-excel-file";
-import { getRaffleEntries } from "../../../../utilities/utility";
+import {
+  getDefaultRaffleConfigs,
+  getRaffleEntries,
+} from "../../../../utilities/utility";
 import { FileData } from "../../../../interfaces/types";
 import { useDispatch } from "react-redux";
 import { updateStore } from "../../../../redux/actions/actions";
@@ -52,6 +55,14 @@ export default function ButtonSetting({
         newRaffleData
       );
 
+      let raffleObj = {};
+      newRaffleList.map((raffle, index) => {
+        raffleObj[raffle as string] = getDefaultRaffleConfigs(
+          raffle,
+          index + 1
+        );
+      });
+
       let newStoreData = {
         originalFileData: newFileData as FileData,
         currentFileData: newFileData as FileData,
@@ -59,6 +70,7 @@ export default function ButtonSetting({
         activeRaffleData: newRaffleData[newRaffleList[0] as string],
         raffleNameList: newRaffleList as string[],
         raffleData: newRaffleData,
+        raffleConfigs: raffleObj,
       };
       dispatch(updateStore(newStoreData));
     });

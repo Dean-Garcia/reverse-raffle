@@ -69,3 +69,16 @@ export const getFileArrayIndexWithName = (name: string, fileData: any) => {
   }
   return -1;
 };
+
+export const getDefaultRaffleConfigs = (raffle?: string, index?: number) => {
+  return {
+    name: `raffle`,
+    id: index,
+    backgroundImage: undefined,
+    font: "defaultFont",
+    fontColor: "white",
+    boxColor: "rgb(0, 0, 0, 0.9)",
+    boxBorderColor: "white",
+    boxTransparency: 1,
+  };
+};

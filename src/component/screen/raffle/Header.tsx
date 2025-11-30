@@ -3,6 +3,7 @@ import "../../../styles.css";
 import {
   Button,
   FormControl,
+  IconButton,
   InputLabel,
   MenuItem,
   OutlinedInput,
@@ -24,11 +25,13 @@ import { getRaffleEntries } from "../../../utilities/utility";
 import { DialogBox } from "../../DialogBox";
 import { FileData } from "../../../interfaces/types";
 import OptionsScreen from "../options/OptionsScreen";
+import { Settings } from "@mui/icons-material";
 
 type HeaderProps = {
   startRaffle: () => number | undefined;
   activeRaffle: string;
   raffleData: object;
+  toggleOptionsMenu: () => void;
 };
 
 const VisuallyHiddenInput = styled("input")({
@@ -43,7 +46,12 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 
-const Header = ({ activeRaffle, startRaffle, raffleData }: HeaderProps) => {
+const Header = ({
+  activeRaffle,
+  startRaffle,
+  raffleData,
+  toggleOptionsMenu,
+}: HeaderProps) => {
   const drawnEntries = useSelector(selectDrawnEntries);
   const dispatch = useDispatch();
   const handleChange = (event: any) => {
@@ -94,17 +102,9 @@ const Header = ({ activeRaffle, startRaffle, raffleData }: HeaderProps) => {
     startRaffle();
   };
 
-  const optionsClick = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   return (
     <div className="header">
-      <Button
+      {/* <Button
         component="label"
         role={undefined}
         variant="contained"
@@ -113,7 +113,7 @@ const Header = ({ activeRaffle, startRaffle, raffleData }: HeaderProps) => {
       >
         Upload Excel File
         <VisuallyHiddenInput type="file" onChange={handleFile} multiple />
-      </Button>
+      </Button> */}
       <Button variant="contained" onClick={handleStartClick}>
         Start Raffle
       </Button>
@@ -132,10 +132,9 @@ const Header = ({ activeRaffle, startRaffle, raffleData }: HeaderProps) => {
           {getMenuOptions()}
         </Select>
       </FormControl>
-      <Button variant="contained" onClick={optionsClick}>
-        Options
-      </Button>
-      <OptionsScreen open={open} onClose={handleClose} />
+      <IconButton onClick={toggleOptionsMenu} sx={{ width: "10%" }}>
+        <Settings />
+      </IconButton>
     </div>
   );
 };

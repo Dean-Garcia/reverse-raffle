@@ -18,7 +18,7 @@ export default function TextSetting({
       <div style={{ textAlign: "left", color: "white", fontSize: "1.5rem" }}>
         {settingTitle}
       </div>
-      <div style={{ display: "flex", flexFlow: "row" }}>
+      <div style={{ display: "flex", flexFlow: "row", gap: "10px" }}>
         <TextField onBlur={(event) => handleChange} />
         <div style={{ alignContent: "center", color: "white" }}>
           {settingExplanationText}

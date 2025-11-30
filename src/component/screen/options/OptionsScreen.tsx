@@ -21,7 +21,7 @@ import {
   updateWinners,
 } from "../../../redux/actions/actions";
 import { useState } from "react";
-import { Button, Dialog, Drawer } from "@mui/material";
+import { Button, Dialog, Drawer, IconButton } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
@@ -49,6 +49,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import InitializeOptions from "./InitializeOptions";
 import RaffleConfiguration from "./RaffleConfigurationOptions";
 import RaffleConfigurationOptions from "./RaffleConfigurationOptions";
+import { Close } from "@mui/icons-material";
 
 export const menuList = [
   {
@@ -130,7 +131,6 @@ export const menuList = [
 ];
 
 type OptionsProps = {
-  open: boolean;
   onClose: () => void;
 };
 
@@ -140,7 +140,7 @@ enum Options {
   raffleSettings = "Raffle Settings",
 }
 
-export default function OptionsScreen({ open, onClose }: OptionsProps) {
+export default function OptionsScreen({ onClose }: OptionsProps) {
   const dispatch = useDispatch();
   const currentRaffle = useSelector(selectCurrentRaffle);
   const activeRaffleData = useSelector(selectActiveRaffleData, {
@@ -153,7 +153,6 @@ export default function OptionsScreen({ open, onClose }: OptionsProps) {
   const currentFileData = useSelector(selectCurrentFileData);
   const raffleNameList = useSelector(selectRaffleNameList);
 
-  const [isWinOpen, setIsWinOpen] = useState(false); // for win screen popup
   const [activeMenu, setActiveMenu] = useState(Options.initialize);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -189,10 +188,14 @@ export default function OptionsScreen({ open, onClose }: OptionsProps) {
         flexFlow: "column",
         width: "100%",
         height: "100%",
+        position: "absolute",
       }}
     >
-      <AppBar position="static">
-        <Toolbar>Settings</Toolbar>
+      <AppBar sx={{ display: "flex", flexFlow: "row" }} position="static">
+        <Toolbar sx={{ width: "95%" }}>Settings</Toolbar>
+        <IconButton onClick={onClose}>
+          <Close />
+        </IconButton>
       </AppBar>
       <Box
         sx={{ display: "flex", flexFlow: "row", width: "100%", height: "100%" }}
