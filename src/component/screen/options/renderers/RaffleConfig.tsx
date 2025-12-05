@@ -1,23 +1,45 @@
-import { Checkbox } from "@mui/material";
-import { useState } from "react";
 import TextSetting from "./TextSetting";
 import ButtonSetting from "./ButtonSetting";
-import { Image } from "@mui/icons-material";
-import Gridbox from "../../Raffle/Gridbox";
+import { RaffleConfigType } from "../../../../interfaces/types";
+import { updateRaffleConfigs } from "../../../../redux/actions/actions";
+import { useDispatch } from "react-redux";
 
 type RaffleConfigComponent = {
   raffleName: string;
+  raffleConfigs: RaffleConfigType;
   backgroundPicture?: string;
   handleChange?: () => void;
 };
 
 export default function RaffleConfig({
   raffleName,
+  raffleConfigs,
   backgroundPicture,
-  handleChange,
 }: RaffleConfigComponent) {
-  const backgroundColor = undefined;
-  const fontColor = undefined;
+  let backgroundColor;
+  const dispatch = useDispatch();
+  const {
+    name,
+    backgroundImage,
+    font,
+    fontColor,
+    boxColor,
+    boxBorderColor,
+    boxTransparency,
+  } = raffleConfigs[raffleName];
+
+  const handleChange = (event, property: keyof (keyof RaffleConfigType)) => {
+    const newConfig = { ...raffleConfigs[raffleName] };
+    console.log("event", event, event?.target?.value);
+    newConfig[property] = event?.target?.value;
+    const newRaffleConfig: RaffleConfigType = {
+      ...raffleConfigs,
+      [raffleName]: newConfig,
+    };
+
+    console.log("newraffleconfig", newRaffleConfig);
+    dispatch(updateRaffleConfigs(newRaffleConfig));
+  };
 
   return (
     <div
@@ -45,7 +67,8 @@ export default function RaffleConfig({
           <TextSetting
             settingTitle="Raffle Name"
             settingExplanationText="Changes the Raffle Name"
-            text={"hello"}
+            text={raffleName}
+            property={"name"}
             handleChange={handleChange}
           />
           <ButtonSetting
@@ -58,25 +81,29 @@ export default function RaffleConfig({
           <TextSetting
             settingTitle="Font"
             settingExplanationText="Changes the font used for each box"
-            text={"hello"}
+            text={font}
+            property="font"
             handleChange={handleChange}
           />
           <TextSetting
             settingTitle="Font Color"
             settingExplanationText="Changes the font color used in each box"
-            text={"hello"}
+            text={fontColor}
+            property={"fontColor"}
             handleChange={handleChange}
           />
           <TextSetting
             settingTitle="Box Color"
             settingExplanationText="Changes the fill background color used for each box"
-            text={"hello"}
+            text={boxColor}
+            property={"boxColor"}
             handleChange={handleChange}
           />
           <TextSetting
             settingTitle="Box Border Color"
             settingExplanationText="Changes the box border color for each box"
-            text={"hello"}
+            text={boxBorderColor}
+            property={"boxBorderColor"}
             handleChange={handleChange}
           />
         </div>
@@ -85,20 +112,27 @@ export default function RaffleConfig({
             display: "flex",
             padding: "10px",
             width: "100%",
+            flexFlow: "column",
             //   border: "1px solid white",
             borderRadius: "1rem",
           }}
         >
-          <div
-            style={{ backgroundColor: backgroundColor, color: fontColor }}
-            className={"box-enabled grid-box-preview"}
-          >
-            0232
+          <div>
+            <div
+              style={{
+                backgroundColor: boxColor,
+                color: fontColor,
+                border: `1px solid ${boxBorderColor}`,
+              }}
+              className={"box-enabled grid-box-preview"}
+            >
+              0232
+            </div>
+            {/* <div className={"box-disabled grid-box-preview"}>023</div> */}
           </div>
-          <div className={"box-disabled grid-box-preview"}>023</div>
           <img
-            src="https://www.w3schools.com/images/w3schools_green.jpg"
-            style={{ objectFit: "scale-down" }}
+            src="https://magazine.northeast.aaa.com/wp-content/uploads/2017/11/yellowstone-national-park-guide-yellowstone-1.jpg"
+            style={{ maxWidth: "75%", objectFit: "scale-down" }}
           />
         </div>
       </div>

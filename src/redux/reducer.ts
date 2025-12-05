@@ -30,7 +30,7 @@ export const reducer = (state = defaultState, action: any) => {
     case Actions.UPDATE_RAFFLE_DATA:
       return { ...state, raffleData: { ...payload } };
     case Actions.UPDATE_RAFFLE_CONFIGS:
-      return { ...state, raffleConfigs: { ...payload } };
+      return { ...state, raffleConfigs: payload };
     case Actions.UPDATE_CURRENT_RAFFLE:
       const newActiveRaffleData = [...state.raffleData[payload]];
       return {

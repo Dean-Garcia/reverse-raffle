@@ -4,6 +4,7 @@ import {
   RaffleData,
   Options,
   StoreState,
+  RaffleConfigType,
 } from "../../interfaces/types";
 
 export const Actions = {
@@ -40,8 +41,10 @@ export const updateActiveRaffleData = (payload: string[]): DefaultPayload => ({
   payload: payload,
 });
 
-export const updateRaffleConfigs = (payload: string[]): DefaultPayload => ({
-  type: Actions.UPDATE_ACTIVE_RAFFLE_DATA,
+export const updateRaffleConfigs = (
+  payload: RaffleConfigType
+): DefaultPayload => ({
+  type: Actions.UPDATE_RAFFLE_CONFIGS,
   payload: payload,
 });
 

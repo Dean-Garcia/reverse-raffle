@@ -12,6 +12,7 @@ import {
   selectWinners,
   selectCurrentFileData,
   selectRaffleNameList,
+  selectRaffleConfigs,
 } from "../../../redux/reducer";
 import {
   updateActiveRaffleData,
@@ -152,6 +153,7 @@ export default function OptionsScreen({ onClose }: OptionsProps) {
   const winners = useSelector(selectWinners);
   const currentFileData = useSelector(selectCurrentFileData);
   const raffleNameList = useSelector(selectRaffleNameList);
+  const raffleConfigs = useSelector(selectRaffleConfigs);
 
   const [activeMenu, setActiveMenu] = useState(Options.initialize);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -167,7 +169,12 @@ export default function OptionsScreen({ onClose }: OptionsProps) {
       case Options.initialize:
         return <InitializeOptions />;
       case Options.raffleConfig:
-        return <RaffleConfigurationOptions raffleNameList={raffleNameList} />;
+        return (
+          <RaffleConfigurationOptions
+            raffleNameList={raffleNameList}
+            raffleConfigs={raffleConfigs}
+          />
+        );
       case Options.raffleSettings:
         break;
       default:

@@ -57,6 +57,7 @@ export default function ButtonSetting({
 
       let raffleObj = {};
       newRaffleList.map((raffle, index) => {
+        console.log("raffleName", raffle);
         raffleObj[raffle as string] = getDefaultRaffleConfigs(
           raffle,
           index + 1

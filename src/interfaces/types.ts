@@ -4,7 +4,7 @@ export type StoreState = {
   raffleData: RaffleData;
   currentRaffle: string;
   raffleNameList: string[];
-  raffleConfigs: RaffleConfig;
+  raffleConfigs: RaffleConfigType;
   activeRaffleData: string[];
   drawnEntries: string[];
   isRaffleActive: boolean;
@@ -14,7 +14,7 @@ export type StoreState = {
   };
 };
 
-type RaffleConfig = {
+export type RaffleConfigType = {
   [raffleName: string]: {
     name: string;
     backgroundImage: string;
