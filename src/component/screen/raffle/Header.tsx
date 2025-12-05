@@ -102,6 +102,8 @@ const Header = ({
     startRaffle();
   };
 
+  const lastDrawnEntry = drawnEntries.slice(-1)[0]?.split("-")[0] ?? "";
+
   return (
     <div className="header">
       {/* <Button
@@ -117,9 +119,7 @@ const Header = ({
       <Button variant="contained" onClick={handleStartClick}>
         Start Raffle
       </Button>
-      <div style={{ fontSize: "2rem", color: "white" }}>
-        {drawnEntries.slice(-1)[0] ?? ""}
-      </div>
+      <div style={{ fontSize: "2rem", color: "white" }}>{lastDrawnEntry}</div>
       <FormControl sx={{ m: 1, minWidth: 120 }}>
         <InputLabel>Raffle</InputLabel>
         <Select

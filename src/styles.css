@@ -80,7 +80,7 @@ root {
 
 .info-box-container {
   grid-area: info-box;
-  background-color: darkblue;
+  background-color: rgb(0, 0, 0);
   color: white;
   display: flex;
   flex-flow: column;

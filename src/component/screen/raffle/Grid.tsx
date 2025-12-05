@@ -90,6 +90,7 @@ const Grid = ({}: GridProps) => {
     setGridBoxes(createGridBoxes(numEntries));
   }, [numEntries]);
 
+  // const backgroundImage = `url(${raffleConfig.backgroundImage})`;
   const backgroundImage = undefined;
 
   return (
