@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 import { selectDrawnEntries } from "../../../redux/reducer";
 import "../../../styles.css";
+import { RaffleConfigType } from "../../../interfaces/types";
 
 type GridboxProps = {
   boxNumber: number;
@@ -9,6 +10,7 @@ type GridboxProps = {
   dummy?: boolean;
   name?: string;
   isEnabled?: boolean;
+  gridBoxStyle?: any;
 };
 
 const Gridbox = ({
@@ -17,7 +19,9 @@ const Gridbox = ({
   dummy = false,
   name,
   isEnabled,
+  gridBoxStyle,
 }: GridboxProps) => {
+  // const [boxStyle, setBoxStyle] = useState(gridBoxStyle, shallowEqual);
   const boxName = useRef(name);
   const boxText = text ? text : boxNumber;
   const drawnEntries = useSelector(selectDrawnEntries);
@@ -25,9 +29,12 @@ const Gridbox = ({
   let boxClass =
     isEnabled && !dummy ? "grid-box box-enabled" : "grid-box box-disabled";
 
+  let boxStyle = isEnabled && !dummy ? gridBoxStyle : {};
   return (
     <div style={{ containerType: "inline-size" }}>
-      <div className={boxClass}>{boxText}</div>
+      <div style={boxStyle} className={boxClass}>
+        {boxText}
+      </div>
     </div>
   );
 };

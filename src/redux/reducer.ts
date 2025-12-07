@@ -1,4 +1,5 @@
 import { StoreState } from "../interfaces/types";
+import { get2025RaffleConfigs } from "../utilities/utility";
 import { Actions } from "./actions/actions";
 
 const defaultState: StoreState = {
@@ -7,7 +8,7 @@ const defaultState: StoreState = {
   raffleData: {},
   currentRaffle: "No Raffle Selected",
   raffleNameList: [],
-  raffleConfigs: {},
+  raffleConfigs: get2025RaffleConfigs(),
   activeRaffleData: [],
   drawnEntries: [],
   isRaffleActive: false,

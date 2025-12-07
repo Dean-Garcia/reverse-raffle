@@ -93,7 +93,11 @@ const Header = ({
     let keys = Object.keys(raffleData);
     let menuOptionsArray: any = [];
     keys.map((key) => {
-      menuOptionsArray.push(<MenuItem value={key}>{key}</MenuItem>);
+      menuOptionsArray.push(
+        <MenuItem key={key} value={key}>
+          {key}
+        </MenuItem>
+      );
     });
     return menuOptionsArray;
   };

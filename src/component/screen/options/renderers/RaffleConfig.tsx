@@ -28,16 +28,16 @@ export default function RaffleConfig({
     boxTransparency,
   } = raffleConfigs[raffleName];
 
+  console.log("raffleConfig", backgroundImage);
+
   const handleChange = (event, property: keyof (keyof RaffleConfigType)) => {
     const newConfig = { ...raffleConfigs[raffleName] };
-    console.log("event", event, event?.target?.value);
     newConfig[property] = event?.target?.value;
     const newRaffleConfig: RaffleConfigType = {
       ...raffleConfigs,
       [raffleName]: newConfig,
     };
 
-    console.log("newraffleconfig", newRaffleConfig);
     dispatch(updateRaffleConfigs(newRaffleConfig));
   };
 
@@ -119,19 +119,20 @@ export default function RaffleConfig({
         >
           <div>
             <div
+              className={"box-enabled grid-box-preview"}
               style={{
                 backgroundColor: boxColor,
                 color: fontColor,
                 border: `1px solid ${boxBorderColor}`,
               }}
-              className={"box-enabled grid-box-preview"}
             >
               0232
             </div>
             {/* <div className={"box-disabled grid-box-preview"}>023</div> */}
           </div>
           <img
-            src="https://magazine.northeast.aaa.com/wp-content/uploads/2017/11/yellowstone-national-park-guide-yellowstone-1.jpg"
+            // src="https://magazine.northeast.aaa.com/wp-content/uploads/2017/11/yellowstone-national-park-guide-yellowstone-1.jpg"
+            src={backgroundImage}
             style={{ maxWidth: "75%", objectFit: "scale-down" }}
           />
         </div>

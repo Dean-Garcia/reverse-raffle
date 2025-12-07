@@ -1,4 +1,22 @@
-import { FileData, RaffleEntriesType } from "../interfaces/types";
+import {
+  FileData,
+  RaffleConfigType,
+  RaffleEntriesType,
+} from "../interfaces/types";
+
+import {
+  apple,
+  grandPrix,
+  homeDepot,
+  kamadoJoe,
+  kitchenAid,
+  nintendo,
+  PS5,
+  RRR,
+  soothe,
+  travel,
+  tv,
+} from "../data/images";
 
 const getPerfectSquareArray = () => {
   let squares = [];
@@ -21,7 +39,6 @@ export const getGridDimensions = (num: number, isLandscape = true) => {
   let closestSq = Math.sqrt(getClosestSquare(num));
   let dimensions = { row: closestSq, column: closestSq };
   if (closestSq * (closestSq - 1) >= num) {
-    console.log(`best dimensions are: ${closestSq - 1} x ${closestSq} `);
     if (isLandscape) return { ...dimensions, row: closestSq - 1 };
     return { ...dimensions, column: closestSq - 1 };
   }
@@ -79,6 +96,134 @@ export const getDefaultRaffleConfigs = (raffle?: string, index?: number) => {
     fontColor: "white",
     boxColor: "rgb(0, 0, 0, 0.9)",
     boxBorderColor: "white",
-    boxTransparency: 1,
+    // boxTransparency: 0.9,
+  };
+};
+
+export const getGridBoxStyleFromConfigs = (raffleConfig: RaffleConfigType) => {
+  let style = {
+    font: raffleConfig?.font ?? "defaultFont",
+    color: raffleConfig?.fontColor ?? "white",
+    border: `1px solid ${raffleConfig?.boxBorderColor}`,
+    backgroundColor: raffleConfig?.boxColor ?? "rgb(0, 0, 0, 0.9)",
+    opacity: raffleConfig?.boxTransparency ?? 0.9,
+  };
+  console.log("gbs", raffleConfig?.boxTransparency, style.opacity);
+
+  return style;
+};
+
+export const get2025RaffleConfigs = () => {
+  return {
+    "Home Depot": {
+      name: `Home Depot`,
+      id: 0,
+      backgroundImage: `${homeDepot}`,
+      font: "defaultFont",
+      fontColor: "black",
+      boxColor: "orange",
+      boxBorderColor: "black",
+      boxTransparency: undefined,
+    },
+    Soothe: {
+      name: `Soothe`,
+      id: 1,
+      backgroundImage: `${soothe}`,
+      font: "defaultFont",
+      fontColor: "black",
+      boxColor: "rgb(147, 248, 255, 0.9)",
+      boxBorderColor: "white",
+      boxTransparency: undefined,
+    },
+    RRR: {
+      name: `RRR`,
+      id: 2,
+      backgroundImage: `${RRR}`,
+      font: "defaultFont",
+      fontColor: "white",
+      boxColor: "rgb(0, 0, 0, 0.9)",
+      boxBorderColor: "white",
+      boxTransparency: undefined,
+    },
+    KitchenAid: {
+      name: `Kitchen Aid`,
+      id: 3,
+      backgroundImage: `${kitchenAid}`,
+      font: "defaultFont",
+      fontColor: "white",
+      boxColor: "rgb(0, 0, 0, 0.9)",
+      boxBorderColor: "white",
+      boxTransparency: undefined,
+    },
+    "Kamado Joe": {
+      name: `Kamado Joe`,
+      id: 4,
+      backgroundImage: `${kamadoJoe}`,
+      font: "defaultFont",
+      fontColor: "white",
+      boxColor: "rgb(0, 0, 0, 0.9)",
+      boxBorderColor: "white",
+      boxTransparency: undefined,
+    },
+    "Grand Prix": {
+      name: `Grand Prix`,
+      id: 5,
+      backgroundImage: `${grandPrix}`,
+      font: "defaultFont",
+      fontColor: "white",
+      boxColor: "rgb(0, 0, 0, 0.9)",
+      boxBorderColor: "white",
+      boxTransparency: undefined,
+    },
+    PS5: {
+      name: `PS5`,
+      id: 6,
+      backgroundImage: `${PS5}`,
+      font: "defaultFont",
+      fontColor: "rgb(0, 111, 205)",
+      boxColor: "white",
+      boxBorderColor: "rgb(0, 111, 205)",
+      boxTransparency: 0.9,
+    },
+    Nintendo: {
+      name: `Nintendo`,
+      id: 7,
+      backgroundImage: `${nintendo}`,
+      font: "defaultFont",
+      fontColor: "white",
+      boxColor: "rgb(0, 0, 0, 0.9)",
+      boxBorderColor: "white",
+      boxTransparency: undefined,
+    },
+    TV: {
+      name: `TV`,
+      id: 8,
+      backgroundImage: `${tv}`,
+      font: "defaultFont",
+      fontColor: "white",
+      boxColor: "rgb(0, 0, 0, 0.9)",
+      boxBorderColor: "white",
+      boxTransparency: undefined,
+    },
+    Apple: {
+      name: `Apple`,
+      id: 9,
+      backgroundImage: `${apple}`,
+      font: "defaultFont",
+      fontColor: "white",
+      boxColor: "rgb(0, 0, 0, 0.9)",
+      boxBorderColor: "white",
+      boxTransparency: undefined,
+    },
+    Travel: {
+      name: `Travel`,
+      id: 10,
+      backgroundImage: `${travel}`,
+      font: "defaultFont",
+      fontColor: "white",
+      boxColor: "rgb(0, 0, 0, 0.9)",
+      boxBorderColor: "white",
+      boxTransparency: undefined,
+    },
   };
 };

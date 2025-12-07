@@ -5,7 +5,7 @@ root {
   width: 100vw;
   margin: 0 0 0 0;
   overflow: hidden;
-  background-color: rgb(37, 37, 37);
+  background-color: rgb(66, 1, 37);
 }
 
 .App {
@@ -14,7 +14,7 @@ root {
 }
 
 .raffle-screen {
-  background-color: aqua;
+  background-color: rgb(60, 66, 60);
   height: 100%;
   width: 100%;
   display: grid;
@@ -70,7 +70,7 @@ root {
 }
 
 .header {
-  background-color: rgb(60, 66, 60);
+  background-color: rgb(37, 37, 37);
   grid-area: header;
   display: grid;
   grid-template-columns: 5fr 11fr 5fr 0.5fr;
@@ -80,13 +80,25 @@ root {
 
 .info-box-container {
   grid-area: info-box;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(37, 37, 37);
   color: white;
   display: flex;
   flex-flow: column;
 }
 
 .info-box {
+  border: 1px solid white;
+  color: white;
+  height: 100%;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  vertical-align: center;
+  display: flex;
+  white-space: pre;
+}
+
+.accordion-box {
   border: 1px solid white;
   color: white;
   height: 100%;
@@ -106,7 +118,7 @@ root {
 }
 
 .grid-container {
-  background-color: green;
+  background-color: rgb(0, 0, 0);
   height: 100%;
   width: 100%;
 }
@@ -119,8 +131,8 @@ root {
   justify-content: center;
   vertical-align: middle;
   align-items: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat: repeat;
+  background-size: contain;
   background-position: center;
   background-image: url("https://magazine.northeast.aaa.com/wp-content/uploads/2017/11/yellowstone-national-park-guide-yellowstone-1.jpg");
 }

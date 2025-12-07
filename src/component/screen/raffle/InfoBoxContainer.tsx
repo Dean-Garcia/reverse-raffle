@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../../../styles.css";
 import InfoBox from "./InfoBox";
 import { RaffleEntriesType } from "../../../interfaces/types";
+import InfoBoxAccordion from "./InfoBoxAccordion";
 
 type InfoBoxContainerProps = {
   activeRaffle: string;
@@ -27,7 +28,12 @@ const InfoBoxContainer = ({
 
   let infoBoxes = createInfoBoxArray();
 
-  return <div className="info-box-container">{infoBoxes}</div>;
+  // return <div className="info-box-container">{infoBoxes}</div>;
+  return (
+    <div className="info-box-container">
+      <InfoBoxAccordion raffleData={raffleData} />
+    </div>
+  );
 };
 
 export default InfoBoxContainer;

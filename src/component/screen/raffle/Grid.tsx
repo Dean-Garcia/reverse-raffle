@@ -2,7 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import "../../../styles.css";
 import {
   getClosestSquare,
+  getGridBoxStyleFromConfigs,
   getGridDimensions,
+  getStyleFromConfigs,
 } from "../../../utilities/utility";
 import Gridbox from "./Gridbox";
 import _ from "lodash";
@@ -16,6 +18,8 @@ import {
   selectStoreState,
   selectWinners,
 } from "../../../redux/reducer";
+import { RaffleConfigType } from "../../../interfaces/types";
+import RRR from "../../../data/images/RRR.jpg";
 
 type GridProps = {};
 
@@ -39,7 +43,7 @@ const Grid = ({}: GridProps) => {
     equalityFn: shallowEqual,
   });
   const activeRaffleConfig = raffleConfig[currentRaffle];
-  console.log("rafflceConfigs", raffleConfig, activeRaffleConfig);
+  const gridBoxStyle = getGridBoxStyleFromConfigs(activeRaffleConfig);
 
   // Create gridbox components for grid
   const createGridBoxes = (numBoxes: number) => {
@@ -47,6 +51,7 @@ const Grid = ({}: GridProps) => {
     if (numBoxes === -1 || !numBoxes) {
       return (
         <Gridbox
+          gridBoxStyle={gridBoxStyle}
           key={"no-entries-box"}
           boxNumber={0}
           name={"no-entries-box"}
@@ -60,6 +65,7 @@ const Grid = ({}: GridProps) => {
     for (let i = 0; i < numBoxes; i++) {
       boxes.push(
         <Gridbox
+          gridBoxStyle={gridBoxStyle}
           key={activeRaffleData?.[i] ?? i}
           boxNumber={i}
           name={activeRaffleData?.[i] ?? ""}
@@ -90,11 +96,11 @@ const Grid = ({}: GridProps) => {
     setGridBoxes(createGridBoxes(numEntries));
   }, [numEntries]);
 
-  // const backgroundImage = `url(${raffleConfig.backgroundImage})`;
-  const backgroundImage = undefined;
-
   return (
-    <div className="grid-staging" style={{ backgroundImage: backgroundImage }}>
+    <div
+      className="grid-staging"
+      style={{ backgroundImage: `url(${activeRaffleConfig?.backgroundImage})` }}
+    >
       <div
         className="grid"
         style={{ gridTemplateColumns: `repeat(${gridDimensions.column}, 1fr)` }}

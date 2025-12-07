@@ -8,8 +8,10 @@ import {
   getRaffleEntries,
 } from "../../../../utilities/utility";
 import { FileData } from "../../../../interfaces/types";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateStore } from "../../../../redux/actions/actions";
+import RaffleConfig from "./RaffleConfig";
+import { selectStoreState } from "../../../../redux/reducer";
 
 type ButtonSettingComponent = {
   settingTitle: string;
@@ -46,24 +48,17 @@ export default function ButtonSetting({
         newFileData as FileData,
         newRaffleList as string[]
       );
-      console.log(
-        "data",
-        newFileData,
-        "raffleNameList",
-        newRaffleList,
-        "raffleData",
-        newRaffleData
-      );
 
-      let raffleObj = {};
-      newRaffleList.map((raffle, index) => {
-        console.log("raffleName", raffle);
-        raffleObj[raffle as string] = getDefaultRaffleConfigs(
-          raffle,
-          index + 1
-        );
-      });
+      // let raffleObj = {};
+      // newRaffleList.map((raffle, index) => {
+      //   console.log("raffleName", raffle);
+      //   raffleObj[raffle as string] = getDefaultRaffleConfigs(
+      //     raffle,
+      //     index + 1
+      //   );
+      // });
 
+      // Does not create new configs. Uses from default state for now.
       let newStoreData = {
         originalFileData: newFileData as FileData,
         currentFileData: newFileData as FileData,
@@ -71,7 +66,6 @@ export default function ButtonSetting({
         activeRaffleData: newRaffleData[newRaffleList[0] as string],
         raffleNameList: newRaffleList as string[],
         raffleData: newRaffleData,
-        raffleConfigs: raffleObj,
       };
       dispatch(updateStore(newStoreData));
     });
