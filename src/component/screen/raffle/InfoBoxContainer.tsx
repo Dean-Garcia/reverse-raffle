@@ -28,12 +28,12 @@ const InfoBoxContainer = ({
 
   let infoBoxes = createInfoBoxArray();
 
-  // return <div className="info-box-container">{infoBoxes}</div>;
-  return (
-    <div className="info-box-container">
-      <InfoBoxAccordion raffleData={raffleData} />
-    </div>
-  );
+  return <div className="info-box-container">{infoBoxes}</div>;
+  // return (
+  //   <div className="info-box-container">
+  //     <InfoBoxAccordion raffleData={raffleData} />
+  //   </div>
+  // );
 };
 
 export default InfoBoxContainer;
