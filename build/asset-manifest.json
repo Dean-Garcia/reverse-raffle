@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.fa5ae822.css",
-    "main.js": "/static/js/main.688c7234.js",
-    "static/media/kitchenAid.png": "/static/media/kitchenAid.11d298c169fee3491288.png",
-    "static/media/homeDepot.png": "/static/media/homeDepot.8e39a0a0c7e957dd6bb9.png",
-    "static/media/soothe.png": "/static/media/soothe.eed1b1ee341d6a54bbc5.png",
-    "static/media/tv.png": "/static/media/tv.5ebb974aedd3fda7de9f.png",
-    "static/media/apple.png": "/static/media/apple.c4be66b950f485b0e9fe.png",
-    "static/media/travel.png": "/static/media/travel.efe3433353e7ce435565.png",
-    "static/media/nintendo.png": "/static/media/nintendo.fcfac81dc56c8790c21b.png",
-    "static/media/PS5.png": "/static/media/PS5.476e6d5ca3d83fecfba0.png",
-    "static/media/grandPrix.png": "/static/media/grandPrix.77462c216290d4a55eec.png",
-    "static/media/kamadoJoe.png": "/static/media/kamadoJoe.c823aee99782cbc799fb.png",
-    "static/media/RRR.jpg": "/static/media/RRR.5d727ebf4cb2674dcdcb.jpg",
-    "index.html": "/index.html",
-    "main.fa5ae822.css.map": "/static/css/main.fa5ae822.css.map",
-    "main.688c7234.js.map": "/static/js/main.688c7234.js.map"
+    "main.css": "/reverse-raffle/static/css/main.fa5ae822.css",
+    "main.js": "/reverse-raffle/static/js/main.bf649ca1.js",
+    "static/media/kitchenAid.png": "/reverse-raffle/static/media/kitchenAid.11d298c169fee3491288.png",
+    "static/media/homeDepot.png": "/reverse-raffle/static/media/homeDepot.8e39a0a0c7e957dd6bb9.png",
+    "static/media/soothe.png": "/reverse-raffle/static/media/soothe.eed1b1ee341d6a54bbc5.png",
+    "static/media/tv.png": "/reverse-raffle/static/media/tv.5ebb974aedd3fda7de9f.png",
+    "static/media/apple.png": "/reverse-raffle/static/media/apple.c4be66b950f485b0e9fe.png",
+    "static/media/travel.png": "/reverse-raffle/static/media/travel.efe3433353e7ce435565.png",
+    "static/media/nintendo.png": "/reverse-raffle/static/media/nintendo.fcfac81dc56c8790c21b.png",
+    "static/media/PS5.png": "/reverse-raffle/static/media/PS5.476e6d5ca3d83fecfba0.png",
+    "static/media/grandPrix.png": "/reverse-raffle/static/media/grandPrix.77462c216290d4a55eec.png",
+    "static/media/kamadoJoe.png": "/reverse-raffle/static/media/kamadoJoe.c823aee99782cbc799fb.png",
+    "static/media/RRR.jpg": "/reverse-raffle/static/media/RRR.5d727ebf4cb2674dcdcb.jpg",
+    "index.html": "/reverse-raffle/index.html",
+    "main.fa5ae822.css.map": "/reverse-raffle/static/css/main.fa5ae822.css.map",
+    "main.bf649ca1.js.map": "/reverse-raffle/static/js/main.bf649ca1.js.map"
   },
   "entrypoints": [
     "static/css/main.fa5ae822.css",
-    "static/js/main.688c7234.js"
+    "static/js/main.bf649ca1.js"
   ]
 }
