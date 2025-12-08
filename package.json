@@ -2,6 +2,7 @@
   "name": "react-typescript",
   "version": "1.0.0",
   "description": "React and TypeScript example starter project",
+  "homepage": "https://dean-garcia.github.io/reverse-raffle/",
   "keywords": [
     "typescript",
     "react",
@@ -31,6 +32,8 @@
     "typescript": "4.4.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
