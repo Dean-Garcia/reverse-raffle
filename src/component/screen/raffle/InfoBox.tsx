@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "../../../styles.css";
 import { useSelector } from "react-redux";
 import {
@@ -15,11 +15,12 @@ const InfoBox = ({ text, num, raffleData }: InfoBoxProps) => {
   const activeDrawn = useSelector(selectDrawnEntries);
   const numberDrawn = activeDrawn.length;
   const numberLeft = num - numberDrawn;
+  const numRef = useRef(num);
   const last15Pulled = activeDrawn.slice(-15);
   const description = `$500 Home Depot Gift Card
   
   `;
-  const startingTicketsText = `Starting Tickets: ${num}`;
+  const startingTicketsText = `Starting Tickets: ${numRef.current}`;
   const ticketsLeftText = `Tickets Left: ${numberLeft}`;
 
   const list = last15Pulled.map((name, index) => {

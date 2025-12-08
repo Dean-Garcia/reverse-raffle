@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.fa5ae822.css",
-    "main.js": "/static/js/main.43e48471.js",
+    "main.js": "/static/js/main.688c7234.js",
     "static/media/kitchenAid.png": "/static/media/kitchenAid.11d298c169fee3491288.png",
     "static/media/homeDepot.png": "/static/media/homeDepot.8e39a0a0c7e957dd6bb9.png",
     "static/media/soothe.png": "/static/media/soothe.eed1b1ee341d6a54bbc5.png",
@@ -15,10 +15,10 @@
     "static/media/RRR.jpg": "/static/media/RRR.5d727ebf4cb2674dcdcb.jpg",
     "index.html": "/index.html",
     "main.fa5ae822.css.map": "/static/css/main.fa5ae822.css.map",
-    "main.43e48471.js.map": "/static/js/main.43e48471.js.map"
+    "main.688c7234.js.map": "/static/js/main.688c7234.js.map"
   },
   "entrypoints": [
     "static/css/main.fa5ae822.css",
-    "static/js/main.43e48471.js"
+    "static/js/main.688c7234.js"
   ]
 }

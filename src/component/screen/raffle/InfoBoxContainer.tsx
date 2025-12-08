@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { InfoBoxAccordion2 } from "./InfoBoxAccordion";
 import { makeStyles } from "@mui/styles";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   updateCurrentRaffle,
   updateDrawnEntries,
 } from "../../../redux/actions/actions";
+import { selectIsRaffleActive } from "../../../redux/reducer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,7 +22,9 @@ export const InfoBoxContainer2 = ({ activeRaffle, raffleData }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [expanded, setExpanded] = useState(activeRaffle);
+  const isRaffleRunning = useSelector(selectIsRaffleActive);
   const handleChange = (panel) => (event, isExpanded) => {
+    if (isRaffleRunning) return;
     setExpanded(isExpanded ? panel : false);
     dispatch(updateCurrentRaffle(panel));
     dispatch(updateDrawnEntries([]));

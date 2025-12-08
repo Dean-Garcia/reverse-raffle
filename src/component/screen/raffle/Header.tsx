@@ -19,7 +19,11 @@ import {
   updateRaffleData,
   updateStore,
 } from "../../../redux/actions/actions";
-import { selectDrawnEntries, selectStoreState } from "../../../redux/reducer";
+import {
+  selectDrawnEntries,
+  selectIsRaffleActive,
+  selectStoreState,
+} from "../../../redux/reducer";
 import readXlsxFile from "read-excel-file";
 import { getRaffleEntries } from "../../../utilities/utility";
 import { DialogBox } from "../../DialogBox";
@@ -54,7 +58,9 @@ const Header = ({
 }: HeaderProps) => {
   const drawnEntries = useSelector(selectDrawnEntries);
   const dispatch = useDispatch();
+  const isRaffleRunning = useSelector(selectIsRaffleActive);
   const handleChange = (event: any) => {
+    if (isRaffleRunning) return;
     dispatch(updateCurrentRaffle(event.target.value));
     dispatch(updateDrawnEntries([]));
   };
@@ -110,16 +116,6 @@ const Header = ({
 
   return (
     <div className="header">
-      {/* <Button
-        component="label"
-        role={undefined}
-        variant="contained"
-        tabIndex={-1}
-        startIcon={<CloudUploadIcon />}
-      >
-        Upload Excel File
-        <VisuallyHiddenInput type="file" onChange={handleFile} multiple />
-      </Button> */}
       <Button variant="contained" onClick={handleStartClick}>
         Start Raffle
       </Button>
