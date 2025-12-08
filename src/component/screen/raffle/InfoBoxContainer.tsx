@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { InfoBoxAccordion2 } from "./InfoBoxAccordion";
+import { InfoBoxAccordion } from "./InfoBoxAccordion";
 import { makeStyles } from "@mui/styles";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -11,14 +11,14 @@ import { selectIsRaffleActive } from "../../../redux/reducer";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    background: "green",
+    background: "rgb(37, 37, 37)",
     height: "95vh",
     display: "flex",
     flexDirection: "column",
   },
 }));
 
-export const InfoBoxContainer2 = ({ activeRaffle, raffleData }) => {
+export const InfoBoxContainer = ({ activeRaffle, raffleData }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [expanded, setExpanded] = useState(activeRaffle);
@@ -37,7 +37,7 @@ export const InfoBoxContainer2 = ({ activeRaffle, raffleData }) => {
     let lengthArray = values.map((raffleValues) => raffleValues.length);
     for (let i = 0; i < textArray.length; i++) {
       infoBoxArray.push(
-        <InfoBoxAccordion2
+        <InfoBoxAccordion
           name={textArray[i]}
           count={lengthArray[i]}
           expanded={expanded}
@@ -55,4 +55,4 @@ export const InfoBoxContainer2 = ({ activeRaffle, raffleData }) => {
   return <div className={classes.root}>{createInfoBoxArray()}</div>;
 };
 
-export default InfoBoxContainer2;
+export default InfoBoxContainer;

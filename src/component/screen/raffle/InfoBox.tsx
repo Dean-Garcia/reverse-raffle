@@ -24,7 +24,7 @@ const InfoBox = ({ text, num, raffleData }: InfoBoxProps) => {
   const ticketsLeftText = `Tickets Left: ${numberLeft}`;
 
   const list = last15Pulled.map((name, index) => {
-    const nameWithoutNumber = name.split("-")[0];
+    const nameWithoutNumber = name?.split("-")[0];
     return <div key={`name-${index}`}>{nameWithoutNumber}</div>;
   });
 

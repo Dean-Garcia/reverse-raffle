@@ -63,6 +63,14 @@ export type StoreState = {
    */
   drawnEntries: string[];
   /**
+   * @description List of Final 10 Entries of Current Raffle
+   * @example
+   *     [
+   *         "John Smith", "Jane Doe", "Jane Smith", "Jane Smith", ...
+   *     ]
+   */
+  finalTenEntries: string[];
+  /**
    * @description Boolean on whether there is a running raffle
    */
   isRaffleActive: boolean;

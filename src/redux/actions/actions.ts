@@ -15,6 +15,7 @@ export const Actions = {
   UPDATE_CURRENT_RAFFLE: "update-current-raffle",
   UPDATE_ACTIVE_RAFFLE_DATA: "update-active-raffle-data",
   UPDATE_DRAWN_ENTRIES: "update-drawn-entries",
+  UPDATE_FINAL_TEN_ENTRIES: "update-final-ten-entries",
   UPDATE_STORE: "update-store",
   UPDATE_OPTIONS: "update-options",
   UPDATE_IS_RAFFLE_ACTIVE: "update-is-raffle-active",
@@ -50,6 +51,11 @@ export const updateRaffleConfigs = (
 
 export const updateDrawnEntries = (payload: string[]): DefaultPayload => ({
   type: Actions.UPDATE_DRAWN_ENTRIES,
+  payload: payload,
+});
+
+export const updateFinalTenEntries = (payload: string[]): DefaultPayload => ({
+  type: Actions.UPDATE_FINAL_TEN_ENTRIES,
   payload: payload,
 });
 

@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const InfoBoxAccordion2 = ({ name, count, expanded, handleChange }) => {
+export const InfoBoxAccordion = ({ name, count, expanded, handleChange }) => {
   const classes = useStyles();
   const classStyle = name === expanded ? classes.expanded : classes.collapsed;
 
@@ -52,4 +52,4 @@ export const InfoBoxAccordion2 = ({ name, count, expanded, handleChange }) => {
   );
 };
 
-export default InfoBoxAccordion2;
+export default InfoBoxAccordion;
