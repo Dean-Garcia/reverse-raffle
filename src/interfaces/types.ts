@@ -100,6 +100,7 @@ export type RaffleConfigType = {
     boxColor?: string;
     boxBorderColor?: string;
     boxTransparency?: number;
+    description?: string;
   };
 };
 

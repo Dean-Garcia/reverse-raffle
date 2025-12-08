@@ -11,14 +11,15 @@ import InfoBox from "./InfoBox";
 
 const useStyles = makeStyles((theme) => ({
   collapsed: {
-    width: "100%",
-    background: "rgb(37, 37, 37)",
-    color: "white",
+    // width: "100%",
+    // background: "rgb(37, 37, 37)",
+    // color: "white",
   },
   expanded: {
-    background: "rgb(37, 37, 37)",
+    // background: "rgb(37, 37, 37)",
     // overflowY: "scroll",
     flexGrow: 1,
+    border: "1px solid white",
   },
 }));
 
@@ -41,11 +42,14 @@ export const InfoBoxAccordion = ({ name, count, expanded, handleChange }) => {
         <Typography component="span" sx={{ width: "70%", flexShrink: 0 }}>
           {name}
         </Typography>
-        <Typography component="span" sx={{ color: "text.secondary" }}>
+        <Typography
+          component="span"
+          sx={{ color: "text.secondary", textAlign: "center", width: "30%" }}
+        >
           {count}
         </Typography>
       </AccordionSummary>
-      <AccordionDetails sx={{ flowGrow: 1 }}>
+      <AccordionDetails>
         <InfoBox text={name} num={count} />
       </AccordionDetails>
     </Accordion>

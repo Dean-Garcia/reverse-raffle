@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import {
   selectActiveRaffleData,
   selectDrawnEntries,
+  selectRaffleConfigs,
 } from "../../../redux/reducer";
 
 type InfoBoxProps = {
@@ -13,13 +14,12 @@ type InfoBoxProps = {
 
 const InfoBox = ({ text, num, raffleData }: InfoBoxProps) => {
   const activeDrawn = useSelector(selectDrawnEntries);
+  const raffleConfig = useSelector(selectRaffleConfigs);
   const numberDrawn = activeDrawn.length;
   const numberLeft = num - numberDrawn;
   const numRef = useRef(num);
   const last15Pulled = activeDrawn.slice(-15);
-  const description = `$500 Home Depot Gift Card
-  
-  `;
+  const description = raffleConfig[text]?.description;
   const startingTicketsText = `Starting Tickets: ${numRef.current}`;
   const ticketsLeftText = `Tickets Left: ${numberLeft}`;
 
