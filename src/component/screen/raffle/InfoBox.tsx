@@ -1,5 +1,10 @@
 import { useState } from "react";
 import "../../../styles.css";
+import { useSelector } from "react-redux";
+import {
+  selectActiveRaffleData,
+  selectDrawnEntries,
+} from "../../../redux/reducer";
 
 type InfoBoxProps = {
   text: string;
@@ -7,13 +12,40 @@ type InfoBoxProps = {
 };
 
 const InfoBox = ({ text, num, raffleData }: InfoBoxProps) => {
-  let boxText = `${text}: 
-    ${num}    
-    `;
+  const activeDrawn = useSelector(selectDrawnEntries);
+  const numberDrawn = activeDrawn.length;
+  const numberLeft = num - numberDrawn;
+  const last15Pulled = activeDrawn.slice(-15);
+  const description = `$500 Home Depot Gift Card
+  
+  `;
+  const startingTicketsText = `Starting Tickets: ${num}`;
+  const ticketsLeftText = `Tickets Left: ${numberLeft}`;
+
+  const list = last15Pulled.map((name, index) => {
+    const nameWithoutNumber = name.split("-")[0];
+    return <div key={`name-${index}`}>{nameWithoutNumber}</div>;
+  });
 
   return (
     <>
-      <div className="info-box">{boxText}</div>
+      <div className="info-box">
+        <div>{description}</div>
+        <div>{startingTicketsText}</div>
+        <div>{ticketsLeftText}</div>
+        <div> </div>
+        <div
+          style={{
+            display: "flex",
+            flexFlow: "column",
+            overflowY: "hidden",
+          }}
+        >
+          {`Recently Pulled:
+          `}
+          {list}
+        </div>
+      </div>
     </>
   );
 };

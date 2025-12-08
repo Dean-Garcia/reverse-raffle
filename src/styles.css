@@ -96,6 +96,8 @@ root {
   vertical-align: center;
   display: flex;
   white-space: pre;
+  flex-flow: column;
+  overflow-y: hidden;
 }
 
 .accordion-box {
@@ -108,6 +110,18 @@ root {
   vertical-align: center;
   display: flex;
   white-space: pre;
+  flex-grow: 1;
+}
+
+.info-expanded {
+  width: "100%";
+  background-color: "red !important";
+  color: "blue !important";
+}
+
+.info-collapsed {
+  background-color: "pink !important";
+  flex-grow: 1;
 }
 
 .grid {

@@ -1,69 +1,55 @@
-import { useState } from "react";
-import "../../../styles.css";
-import InfoBox from "./InfoBox";
-import { RaffleEntriesType } from "../../../interfaces/types";
-import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import Typography from "@mui/material/Typography";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Typography,
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { create } from "@mui/material/styles/createTransitions";
+import React from "react";
+import InfoBox from "./InfoBox";
 
-type InfoBoxAccordionProps = {
-  activeRaffle: string;
-  raffleData: RaffleEntriesType;
+const useStyles = makeStyles((theme) => ({
+  collapsed: {
+    width: "100%",
+    background: "rgb(37, 37, 37)",
+    color: "white",
+  },
+  expanded: {
+    background: "rgb(37, 37, 37)",
+    // overflowY: "scroll",
+    flexGrow: 1,
+  },
+}));
+
+export const InfoBoxAccordion2 = ({ name, count, expanded, handleChange }) => {
+  const classes = useStyles();
+  const classStyle = name === expanded ? classes.expanded : classes.collapsed;
+
+  return (
+    <Accordion
+      className={classStyle}
+      expanded={expanded === name}
+      onChange={handleChange(name)}
+      disableGutters
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls={`${name}-content`}
+        id={`${name}-header`}
+      >
+        <Typography component="span" sx={{ width: "70%", flexShrink: 0 }}>
+          {name}
+        </Typography>
+        <Typography component="span" sx={{ color: "text.secondary" }}>
+          {count}
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails sx={{ flowGrow: 1 }}>
+        <InfoBox text={name} num={count} />
+      </AccordionDetails>
+    </Accordion>
+  );
 };
 
-const InfoBoxAccordion = ({
-  activeRaffle,
-  raffleData,
-}: InfoBoxAccordionProps) => {
-  const [expanded, setExpanded] = useState<string | false>(false);
-
-  const handleChange =
-    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panel : false);
-    };
-
-  const createInfoBoxArray = () => {
-    let infoBoxArray = [];
-    let textArray = Object.keys(raffleData) ?? [];
-    let values = Object.values(raffleData);
-    let lengthArray = values.map((raffleValues) => raffleValues.length);
-    for (let i = 0; i < textArray.length; i++) {
-      infoBoxArray.push(
-        <Accordion
-          expanded={expanded === `panel${i}`}
-          onChange={handleChange(`panel${i}`)}
-          style={{ height: "max-content" }}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls={`panel${i}bh-content`}
-            id={`panel${i}bh-header`}
-          >
-            <Typography component="span" sx={{ width: "75%", flexShrink: 0 }}>
-              {textArray[i]}
-            </Typography>
-            <Typography component="span" sx={{ color: "text.secondary" }}>
-              {lengthArray[i]}
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <InfoBox text={textArray[i]} num={lengthArray[i]} />
-          </AccordionDetails>
-        </Accordion>
-      );
-    }
-    return infoBoxArray;
-  };
-
-  // let infoBoxes = createInfoBoxArray();
-
-  // return <div className="info-box-container">{infoBoxes}</div>;
-  let infoBoxes = createInfoBoxArray();
-
-  return <div>{createInfoBoxArray() ? infoBoxes : null}</div>;
-};
-
-export default InfoBoxAccordion;
+export default InfoBoxAccordion2;

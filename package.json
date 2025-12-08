@@ -16,6 +16,7 @@
     "lodash": "4.17.21",
     "read-excel-file": "5.8.6",
     "@mui/material": "6.1.9",
+    "@mui/styles": "6.4.8",
     "@emotion/styled": "11.13.5",
     "@emotion/react": "11.13.5",
     "@mui/icons-material": "6.1.9",

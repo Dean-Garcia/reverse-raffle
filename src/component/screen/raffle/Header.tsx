@@ -60,34 +60,34 @@ const Header = ({
   };
   const [open, setOpen] = useState(false);
 
-  const handleFile = (event: any) => {
-    readXlsxFile(event.target.files[0]).then((data) => {
-      let newFileData = data.slice(1);
-      let newRaffleList = data[0].slice(1);
-      let newRaffleData = getRaffleEntries(
-        newFileData as FileData,
-        newRaffleList as string[]
-      );
-      console.log(
-        "data",
-        newFileData,
-        "raffleNameList",
-        newRaffleList,
-        "raffleData",
-        newRaffleData
-      );
+  // const handleFile = (event: any) => {
+  //   readXlsxFile(event.target.files[0]).then((data) => {
+  //     let newFileData = data.slice(1);
+  //     let newRaffleList = data[0].slice(1);
+  //     let newRaffleData = getRaffleEntries(
+  //       newFileData as FileData,
+  //       newRaffleList as string[]
+  //     );
+  //     console.log(
+  //       "data",
+  //       newFileData,
+  //       "raffleNameList",
+  //       newRaffleList,
+  //       "raffleData",
+  //       newRaffleData
+  //     );
 
-      let newStoreData = {
-        originalFileData: newFileData as FileData,
-        currentFileData: newFileData as FileData,
-        currentRaffle: newRaffleList[0] as string,
-        activeRaffleData: newRaffleData[newRaffleList[0] as string],
-        raffleNameList: newRaffleList as string[],
-        raffleData: newRaffleData,
-      };
-      dispatch(updateStore(newStoreData));
-    });
-  };
+  //     let newStoreData = {
+  //       originalFileData: newFileData as FileData,
+  //       currentFileData: newFileData as FileData,
+  //       currentRaffle: newRaffleList[0] as string,
+  //       activeRaffleData: newRaffleData[newRaffleList[0] as string],
+  //       raffleNameList: newRaffleList as string[],
+  //       raffleData: newRaffleData,
+  //     };
+  //     dispatch(updateStore(newStoreData));
+  //   });
+  // };
 
   const getMenuOptions = () => {
     let keys = Object.keys(raffleData);

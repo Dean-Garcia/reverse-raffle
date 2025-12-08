@@ -1,18 +1,32 @@
-import { useState } from "react";
-import "../../../styles.css";
-import InfoBox from "./InfoBox";
-import { RaffleEntriesType } from "../../../interfaces/types";
-import InfoBoxAccordion from "./InfoBoxAccordion";
+import React, { useEffect, useState } from "react";
+import { InfoBoxAccordion2 } from "./InfoBoxAccordion";
+import { makeStyles } from "@mui/styles";
+import { useDispatch } from "react-redux";
+import {
+  updateCurrentRaffle,
+  updateDrawnEntries,
+} from "../../../redux/actions/actions";
 
-type InfoBoxContainerProps = {
-  activeRaffle: string;
-  raffleData: RaffleEntriesType;
-};
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+    background: "green",
+    height: "95vh",
+    display: "flex",
+    flexDirection: "column",
+  },
+}));
 
-const InfoBoxContainer = ({
-  activeRaffle,
-  raffleData,
-}: InfoBoxContainerProps) => {
+export const InfoBoxContainer2 = ({ activeRaffle, raffleData }) => {
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const [expanded, setExpanded] = useState(activeRaffle);
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+    dispatch(updateCurrentRaffle(panel));
+    dispatch(updateDrawnEntries([]));
+  };
+
   const createInfoBoxArray = () => {
     let infoBoxArray = [];
     let textArray = Object.keys(raffleData) ?? [];
@@ -20,20 +34,22 @@ const InfoBoxContainer = ({
     let lengthArray = values.map((raffleValues) => raffleValues.length);
     for (let i = 0; i < textArray.length; i++) {
       infoBoxArray.push(
-        <InfoBox key={textArray[i]} text={textArray[i]} num={lengthArray[i]} />
+        <InfoBoxAccordion2
+          name={textArray[i]}
+          count={lengthArray[i]}
+          expanded={expanded}
+          handleChange={handleChange}
+        />
       );
     }
     return infoBoxArray;
   };
 
-  let infoBoxes = createInfoBoxArray();
+  useEffect(() => {
+    if (expanded !== activeRaffle) setExpanded(activeRaffle);
+  }, [activeRaffle]);
 
-  return <div className="info-box-container">{infoBoxes}</div>;
-  // return (
-  //   <div className="info-box-container">
-  //     <InfoBoxAccordion raffleData={raffleData} />
-  //   </div>
-  // );
+  return <div className={classes.root}>{createInfoBoxArray()}</div>;
 };
 
-export default InfoBoxContainer;
+export default InfoBoxContainer2;

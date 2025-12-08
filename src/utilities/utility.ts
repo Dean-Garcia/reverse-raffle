@@ -225,5 +225,5 @@ export const get2025RaffleConfigs = () => {
       boxBorderColor: "white",
       boxTransparency: undefined,
     },
-  };
+  } as RaffleConfigType;
 };

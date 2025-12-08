@@ -1,6 +1,5 @@
 import "../../../styles.css";
 import Grid from "./Grid";
-import InfoBoxContainer from "./InfoBoxContainer";
 import Header from "./Header";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {
@@ -28,6 +27,7 @@ import {
   getRaffleEntries,
 } from "../../../utilities/utility";
 import OptionsScreen from "../options/OptionsScreen";
+import InfoBoxContainer2 from "./InfoBoxContainer";
 
 type PageProps = {};
 
@@ -209,7 +209,7 @@ export default function Page({}: PageProps) {
         raffleData={raffleData}
         toggleOptionsMenu={toggleOptionsMenu}
       />
-      <InfoBoxContainer activeRaffle={currentRaffle} raffleData={raffleData} />
+      <InfoBoxContainer2 activeRaffle={currentRaffle} raffleData={raffleData} />
       <Grid />
       <WinnerDialogBox
         open={isWinnerDialogOpen}

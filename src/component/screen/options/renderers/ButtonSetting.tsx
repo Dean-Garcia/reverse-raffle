@@ -67,6 +67,8 @@ export default function ButtonSetting({
         raffleNameList: newRaffleList as string[],
         raffleData: newRaffleData,
       };
+
+      console.log("newStoreData", newStoreData);
       dispatch(updateStore(newStoreData));
     });
   };
