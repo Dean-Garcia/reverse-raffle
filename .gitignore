@@ -1,1 +1,4 @@
 node_modules
+main.*
+asset-manifest.json
+build/*
