@@ -1,7 +1,7 @@
 {
-  "name": "react-typescript",
+  "name": "reverse-raffle",
   "version": "1.0.0",
-  "description": "React and TypeScript example starter project",
+  "description": "Reverse Raffle Web Page",
   "homepage": "https://dean-garcia.github.io/reverse-raffle/",
   "keywords": [
     "typescript",
