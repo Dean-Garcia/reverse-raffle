@@ -123,6 +123,7 @@ export default function Page({}: PageProps) {
 
       // When 10 entries left, await manual key press.
       if (entriesLeft <= 10) {
+        dispatch(updateFinalTenEntries(newActiveRaffleData));
         await new Promise((r) => document.addEventListener("keypress", r));
       }
 
@@ -174,7 +175,8 @@ export default function Page({}: PageProps) {
         );
         setTimeout(() => {
           setIsWinnerDialogOpen(true);
-        }, 1000);
+          dispatch(updateFinalTenEntries([]));
+        }, 1500);
         return;
       }
 

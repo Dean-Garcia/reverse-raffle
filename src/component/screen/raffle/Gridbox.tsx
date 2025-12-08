@@ -1,6 +1,9 @@
 import { useRef, useState } from "react";
 import { shallowEqual, useSelector } from "react-redux";
-import { selectDrawnEntries } from "../../../redux/reducer";
+import {
+  selectDrawnEntries,
+  selectFinalTenEntries,
+} from "../../../redux/reducer";
 import "../../../styles.css";
 import { RaffleConfigType } from "../../../interfaces/types";
 
@@ -22,6 +25,10 @@ const Gridbox = ({
   gridBoxStyle,
 }: GridboxProps) => {
   // const [boxStyle, setBoxStyle] = useState(gridBoxStyle, shallowEqual);
+  const isFinalTen = useSelector(selectFinalTenEntries);
+  if (isFinalTen.length > 0) {
+    text = name?.split("-")[0];
+  }
   const boxName = useRef(name);
   const boxText = text ? text : boxNumber;
   const drawnEntries = useSelector(selectDrawnEntries);

@@ -65,8 +65,6 @@ const Header = ({
     dispatch(updateDrawnEntries([]));
   };
 
-  console.log("raflfeData", raffleData[activeRaffle]?.length);
-
   const getMenuOptions = () => {
     let keys = Object.keys(raffleData);
     let menuOptionsArray: any = [];
