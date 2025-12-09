@@ -5,6 +5,7 @@ import {
   selectActiveRaffleData,
   selectDrawnEntries,
   selectRaffleConfigs,
+  selectWinners,
 } from "../../../redux/reducer";
 
 type InfoBoxProps = {
@@ -15,9 +16,11 @@ type InfoBoxProps = {
 const InfoBox = ({ text, num, raffleData }: InfoBoxProps) => {
   const activeDrawn = useSelector(selectDrawnEntries);
   const raffleConfig = useSelector(selectRaffleConfigs);
+  const winner = useSelector(selectWinners);
   const numberDrawn = activeDrawn.length;
-  const numberLeft = num - numberDrawn;
+
   const numRef = useRef(num);
+  const numberLeft: number = numRef.current - numberDrawn;
   const last15Pulled = activeDrawn.slice(-15);
   const description = raffleConfig[text]?.description;
   const startingTicketsText = `Starting Tickets: ${numRef.current}`;
@@ -28,12 +31,18 @@ const InfoBox = ({ text, num, raffleData }: InfoBoxProps) => {
     return <div key={`name-${index}`}>{nameWithoutNumber}</div>;
   });
 
+  const ticketsElements = winner[text] ? (
+    <div>{`Winner: ${winner[text]?.split("-")[0]}`}</div>
+  ) : (
+    <div>{ticketsLeftText}</div>
+  );
+
   return (
     <>
       <div className="info-box">
         <div>{description}</div>
         <div>{startingTicketsText}</div>
-        <div>{ticketsLeftText}</div>
+        {ticketsElements}
         <div> </div>
         <div
           style={{

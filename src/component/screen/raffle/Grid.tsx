@@ -94,7 +94,7 @@ const Grid = ({}: GridProps) => {
 
   useEffect(() => {
     setGridBoxes(createGridBoxes(numEntries));
-  }, [numEntries]);
+  }, [currentRaffle]);
 
   return (
     <div

@@ -28,8 +28,6 @@ export default function RaffleConfig({
     boxTransparency,
   } = raffleConfigs[raffleName];
 
-  console.log("raffleConfig", backgroundImage);
-
   const handleChange = (event, property: keyof (keyof RaffleConfigType)) => {
     const newConfig = { ...raffleConfigs[raffleName] };
     newConfig[property] = event?.target?.value;

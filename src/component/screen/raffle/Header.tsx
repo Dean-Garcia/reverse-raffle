@@ -23,6 +23,7 @@ import {
   selectDrawnEntries,
   selectIsRaffleActive,
   selectStoreState,
+  selectWinners,
 } from "../../../redux/reducer";
 import readXlsxFile from "read-excel-file";
 import { getRaffleEntries } from "../../../utilities/utility";
@@ -64,6 +65,7 @@ const Header = ({
     dispatch(updateCurrentRaffle(event.target.value));
     dispatch(updateDrawnEntries([]));
   };
+  const winners = useSelector(selectWinners);
 
   const getMenuOptions = () => {
     let keys = Object.keys(raffleData);
@@ -83,13 +85,17 @@ const Header = ({
   };
 
   const lastDrawnEntry = drawnEntries.slice(-1)[0]?.split("-")[0] ?? "";
+  const winnerName = winners[activeRaffle]?.split("-")[0];
+  const winnerText = `${winnerName} has won the ${activeRaffle} raffle!`;
+
+  const headerText = winnerName ? winnerText : lastDrawnEntry;
 
   return (
     <div className="header">
       <Button variant="contained" onClick={handleStartClick}>
         Start Raffle
       </Button>
-      <div style={{ fontSize: "2rem", color: "white" }}>{lastDrawnEntry}</div>
+      <div style={{ fontSize: "2rem", color: "white" }}>{headerText}</div>
       <FormControl sx={{ m: 1, minWidth: 120 }}>
         <InputLabel>Raffle</InputLabel>
         <Select

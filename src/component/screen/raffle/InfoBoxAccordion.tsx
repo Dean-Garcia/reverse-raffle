@@ -33,6 +33,9 @@ export const InfoBoxAccordion = ({ name, count, expanded, handleChange }) => {
       expanded={expanded === name}
       onChange={handleChange(name)}
       disableGutters
+      slotProps={{
+        transition: { unmountOnExit: true },
+      }}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}

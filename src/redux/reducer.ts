@@ -43,7 +43,6 @@ export const reducer = (state = defaultState, action: any) => {
     case Actions.UPDATE_DRAWN_ENTRIES:
       return { ...state, drawnEntries: [...payload] };
     case Actions.UPDATE_FINAL_TEN_ENTRIES:
-      console.log("update final ten");
       return { ...state, finalTenEntries: [...payload] };
     case Actions.UPDATE_IS_RAFFLE_ACTIVE:
       return { ...state, isRaffleActive: payload };

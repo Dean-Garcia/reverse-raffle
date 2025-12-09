@@ -94,7 +94,7 @@ export const getDefaultRaffleConfigs = (raffle?: string, index?: number) => {
     backgroundImage: undefined,
     font: "defaultFont",
     fontColor: "white",
-    boxColor: "rgb(0, 0, 0, 0.9)",
+    boxColor: "rgb(0, 0, 0)",
     boxBorderColor: "white",
     // boxTransparency: 0.9,
   };
@@ -105,14 +105,27 @@ export const getGridBoxStyleFromConfigs = (raffleConfig: RaffleConfigType) => {
     font: raffleConfig?.font ?? "defaultFont",
     color: raffleConfig?.fontColor ?? "white",
     border: `1px solid ${raffleConfig?.boxBorderColor}`,
-    backgroundColor: raffleConfig?.boxColor ?? "rgb(0, 0, 0, 0.9)",
-    opacity: raffleConfig?.boxTransparency ?? 0.9,
+    backgroundColor: raffleConfig?.boxColor ?? "rgb(0, 0, 0)",
+    opacity: raffleConfig?.boxTransparency ?? 1,
   };
-  console.log("gbs", raffleConfig?.boxTransparency, style.opacity);
 
   return style;
 };
 
+/**
+ * home depot - orange and black
+ * soothe - pastel light blue
+ * ranch retreat - green and red
+ * kitchen - silver and black
+ * kamado joe - red and black
+ * indy - blue and red
+ * ps5 white and black?
+ * nintendo switch - red
+ * tv - purple
+ * apple bundles -turquoise
+ * travel - hot pink and black
+ * @returns
+ */
 export const get2025RaffleConfigs = () => {
   return {
     "Home Depot": {
@@ -123,7 +136,7 @@ export const get2025RaffleConfigs = () => {
       fontColor: "black",
       boxColor: "orange",
       boxBorderColor: "black",
-      boxTransparency: undefined,
+      boxTransparency: 1,
       description: `Home Depot Gift Card\nValue: $500\n\n`,
     },
     Soothe: {
@@ -132,9 +145,9 @@ export const get2025RaffleConfigs = () => {
       backgroundImage: `${soothe}`,
       font: "defaultFont",
       fontColor: "black",
-      boxColor: "rgb(147, 248, 255, 0.9)",
+      boxColor: "rgb(147, 248, 255)",
       boxBorderColor: "white",
-      boxTransparency: undefined,
+      boxTransparency: 1,
       description: `Soothe Gift Card\nValue: $500\n\n`,
     },
     RRR: {
@@ -142,10 +155,10 @@ export const get2025RaffleConfigs = () => {
       id: 2,
       backgroundImage: `${RRR}`,
       font: "defaultFont",
-      fontColor: "white",
-      boxColor: "rgb(0, 0, 0, 0.9)",
-      boxBorderColor: "white",
-      boxTransparency: undefined,
+      boxColor: "rgb(138, 187, 108)",
+      boxBorderColor: "rgb(207, 15, 15, .5)",
+      fontColor: "rgba(46, 126, 9, 1)",
+      boxTransparency: 1,
       description: `Roemerman Ranch Retreat\nValue: PRICELESS\n\n`,
     },
     KitchenAid: {
@@ -153,10 +166,10 @@ export const get2025RaffleConfigs = () => {
       id: 3,
       backgroundImage: `${kitchenAid}`,
       font: "defaultFont",
-      fontColor: "white",
-      boxColor: "rgb(0, 0, 0, 0.9)",
-      boxBorderColor: "white",
-      boxTransparency: undefined,
+      fontColor: "silver",
+      boxColor: "black",
+      boxBorderColor: "silver",
+      boxTransparency: 1,
       description: `KitchenAid 5.5 Quart \nBowl-Lift Stand Mixer\n$500 Williams Sonoma Gift Card\n Value: $1000\n\n`,
     },
     "Kamado Joe": {
@@ -164,10 +177,10 @@ export const get2025RaffleConfigs = () => {
       id: 4,
       backgroundImage: `${kamadoJoe}`,
       font: "defaultFont",
-      fontColor: "white",
-      boxColor: "rgb(0, 0, 0, 0.9)",
-      boxBorderColor: "white",
-      boxTransparency: undefined,
+      fontColor: "black",
+      boxColor: "rgb(207, 15, 15)",
+      boxBorderColor: "black",
+      boxTransparency: 1,
       description: `Kamado Joe Classic Joe II\n(includes cover)\nValue: $1600\n\n`,
     },
     "Grand Prix": {
@@ -175,10 +188,10 @@ export const get2025RaffleConfigs = () => {
       id: 5,
       backgroundImage: `${grandPrix}`,
       font: "defaultFont",
-      fontColor: "white",
-      boxColor: "rgb(0, 0, 0, 0.9)",
-      boxBorderColor: "white",
-      boxTransparency: undefined,
+      fontColor: "rgba(229, 9, 48)",
+      boxColor: "rgba(108, 169, 228)",
+      boxBorderColor: "rgba(0, 34, 68)",
+      boxTransparency: 1,
       description: `Indy Car Grand Prix Arlington\n2 Reserved Weekend Passes\nValue: $540\n\n`,
     },
     PS5: {
@@ -187,9 +200,9 @@ export const get2025RaffleConfigs = () => {
       backgroundImage: `${PS5}`,
       font: "defaultFont",
       fontColor: "rgb(0, 111, 205)",
-      boxColor: "white",
+      boxColor: "rgba(255,255,255)",
       boxBorderColor: "rgb(0, 111, 205)",
-      boxTransparency: 0.9,
+      boxTransparency: 1,
       description: `PS5 Bundle\nValue: $800\n\n`,
     },
     Nintendo: {
@@ -198,9 +211,9 @@ export const get2025RaffleConfigs = () => {
       backgroundImage: `${nintendo}`,
       font: "defaultFont",
       fontColor: "white",
-      boxColor: "rgb(0, 0, 0, 0.9)",
+      boxColor: "rgba(231, 0, 18)",
       boxBorderColor: "white",
-      boxTransparency: undefined,
+      boxTransparency: 1,
       description: `Nintendo Switch 2 Bundle\nValue: $800\n\n`,
     },
     TV: {
@@ -208,10 +221,10 @@ export const get2025RaffleConfigs = () => {
       id: 8,
       backgroundImage: `${tv}`,
       font: "defaultFont",
-      fontColor: "white",
-      boxColor: "rgb(0, 0, 0, 0.9)",
-      boxBorderColor: "white",
-      boxTransparency: undefined,
+      fontColor: "rgba(201, 172, 210)",
+      boxColor: "rgba(110, 71, 147)",
+      boxBorderColor: "rgba(201, 172, 210)",
+      boxTransparency: 1,
       description: `85" TV with Soundbar\nValue: $1500\n\n`,
     },
     Apple: {
@@ -219,10 +232,10 @@ export const get2025RaffleConfigs = () => {
       id: 9,
       backgroundImage: `${apple}`,
       font: "defaultFont",
-      fontColor: "white",
-      boxColor: "rgb(0, 0, 0, 0.9)",
+      fontColor: "black",
+      boxColor: "rgba(45, 228, 218)",
       boxBorderColor: "white",
-      boxTransparency: undefined,
+      boxTransparency: 1,
       description: `iPadAir 13" 256gb\nAirPods Pro 3\nValue: $1200\n\n`,
     },
     Travel: {
@@ -230,10 +243,10 @@ export const get2025RaffleConfigs = () => {
       id: 10,
       backgroundImage: `${travel}`,
       font: "defaultFont",
-      fontColor: "white",
-      boxColor: "rgb(0, 0, 0, 0.9)",
-      boxBorderColor: "white",
-      boxTransparency: undefined,
+      fontColor: "black",
+      boxColor: "rgba(255, 0, 226)",
+      boxBorderColor: "black",
+      boxTransparency: 1,
       description: `Travel Voucher - no restrictions\nValue: $2500\n\n`,
     },
   } as RaffleConfigType;

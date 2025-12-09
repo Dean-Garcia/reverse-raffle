@@ -72,7 +72,7 @@ export default function Page({}: PageProps) {
     // else if (numLeft >= 5) return 900;
     // else if (numLeft >= 4) return 1000;
     // else if (numLeft >= 3) return 2000;
-    return 5000;
+    return 0;
   };
 
   const startRaffle = () => {
@@ -144,7 +144,10 @@ export default function Page({}: PageProps) {
       // Close loop, show winner, and update file
       if (newActiveRaffleData.length === 1) {
         clearInterval(interval);
-        let winnerPayload = { [currentRaffle]: newActiveRaffleData[0] };
+        const winnerPayload = {
+          ...winners,
+          [currentRaffle]: newActiveRaffleData[0],
+        };
 
         // remove winner from file data
         let newCurrentFileData = [...currentFileData];
@@ -153,14 +156,7 @@ export default function Page({}: PageProps) {
           winnerName,
           newCurrentFileData
         );
-        // console.log(
-        //   "winnerIndex",
-        //   newCurrentFileData[winnerIndex],
-        //   winnerIndex,
-        //   newCurrentFileData.length
-        // );
         newCurrentFileData.splice(winnerIndex, 1);
-        // console.log("length", newCurrentFileData.length);
         const newRaffleData = getRaffleEntries(
           newCurrentFileData,
           raffleNameList
