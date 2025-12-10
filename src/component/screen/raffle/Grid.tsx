@@ -4,7 +4,6 @@ import {
   getClosestSquare,
   getGridBoxStyleFromConfigs,
   getGridDimensions,
-  getStyleFromConfigs,
 } from "../../../utilities/utility";
 import Gridbox from "./Gridbox";
 import _ from "lodash";

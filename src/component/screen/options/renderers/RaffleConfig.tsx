@@ -76,13 +76,13 @@ export default function RaffleConfig({
             handleClick={handleChange}
             isUploadFile={true}
           />
-          <TextSetting
+          {/* <TextSetting
             settingTitle="Font"
             settingExplanationText="Changes the font used for each box"
             text={font}
             property="font"
             handleChange={handleChange}
-          />
+          /> */}
           <TextSetting
             settingTitle="Font Color"
             settingExplanationText="Changes the font color used in each box"
@@ -104,6 +104,13 @@ export default function RaffleConfig({
             property={"boxBorderColor"}
             handleChange={handleChange}
           />
+          <TextSetting
+            settingTitle="Box Color Opacity"
+            settingExplanationText="Changes the box color transparency"
+            text={boxTransparency}
+            property={"boxTransparency"}
+            handleChange={handleChange}
+          />
         </div>
         <div
           style={{
@@ -122,6 +129,7 @@ export default function RaffleConfig({
                 backgroundColor: boxColor,
                 color: fontColor,
                 border: `1px solid ${boxBorderColor}`,
+                opacity: boxTransparency,
               }}
             >
               0232
