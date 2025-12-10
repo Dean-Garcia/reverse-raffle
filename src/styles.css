@@ -85,7 +85,8 @@ root {
   font-size: 3rem;
   width: 87%;
   display: flex;
-  flex-flow: column;
+  flex-flow: row;
+  gap: 30px;
   /* border: 1px solid white; */
 }
 
