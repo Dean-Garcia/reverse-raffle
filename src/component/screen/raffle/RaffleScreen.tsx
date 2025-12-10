@@ -22,7 +22,7 @@ import {
   updateWinners,
 } from "../../../redux/actions/actions";
 import { DialogBox } from "../../DialogBox";
-import { useState } from "react";
+import { act, useState } from "react";
 import { WinnerDialogBox } from "./WinnerDialogBox";
 import {
   getFileArrayIndexWithName,
@@ -49,6 +49,7 @@ export default function Page({}: PageProps) {
   const finalTenList = useSelector(selectFinalTenEntries);
 
   const [isWinnerDialogOpen, setIsWinnerDialogOpen] = useState(false); // for win screen popup
+  const [showGridBoxes, setShowGridBoxes] = useState(true); // Show grid boxes. Don't show when there is a winner.
   const [isOptionsOpen, setIsOptionsOpen] = useState(false); // for options
 
   // Random Number Generator for raffle. Max is excluded.
@@ -76,7 +77,7 @@ export default function Page({}: PageProps) {
   };
 
   const startRaffle = () => {
-    if (isRaffleActive) return;
+    if (isRaffleActive || winners[currentRaffle]) return;
 
     dispatch(updateIsRaffleActive(true));
     let newDrawnEntries = [...drawnEntries];
@@ -123,7 +124,10 @@ export default function Page({}: PageProps) {
 
       // When 10 entries left, await manual key press.
       if (entriesLeft <= 10) {
-        dispatch(updateFinalTenEntries(newActiveRaffleData));
+        if (entriesLeft === 10) {
+          await new Promise((r) => document.addEventListener("keypress", r));
+          dispatch(updateFinalTenEntries(newActiveRaffleData));
+        }
         await new Promise((r) => document.addEventListener("keypress", r));
       }
 
@@ -161,6 +165,14 @@ export default function Page({}: PageProps) {
           newCurrentFileData,
           raffleNameList
         );
+        // dispatch(
+        //   updateStore({
+        //     isRaffleActive: false,
+        //     winners: winnerPayload,
+        //     currentFileData: newCurrentFileData,
+        //     raffleData: newRaffleData,
+        //   })
+        // );
         dispatch(
           updateStore({
             isRaffleActive: false,
@@ -185,15 +197,6 @@ export default function Page({}: PageProps) {
     return interval;
   };
 
-  // const pickFinalTenTicket = () => {
-  //   dispatch(updateIsRaffleActive(true));
-  // };
-
-  // useKeyboardShortcut({
-  //   key: "Enter",
-  //   onKeyPressed: pickFinalTenTicket,
-  // });
-
   // Close of winner dialog box
   const handleClose = () => {
     setIsWinnerDialogOpen(false);
@@ -201,6 +204,7 @@ export default function Page({}: PageProps) {
 
   const toggleWinnnerDialogBox = () => {
     setIsWinnerDialogOpen(!isWinnerDialogOpen);
+    setShowGridBoxes(false);
   };
 
   const toggleOptionsMenu = () => {
@@ -228,7 +232,7 @@ export default function Page({}: PageProps) {
         toggleOptionsMenu={toggleOptionsMenu}
       />
       <InfoBoxContainer activeRaffle={currentRaffle} raffleData={raffleData} />
-      <Grid />
+      <Grid showGridBoxes={showGridBoxes} setShowGridBoxes={setShowGridBoxes} />
       <WinnerDialogBox
         open={isWinnerDialogOpen}
         onClose={toggleWinnnerDialogBox}

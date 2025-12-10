@@ -13,6 +13,7 @@ import {
   selectActiveRaffleData,
   selectCurrentRaffle,
   selectDrawnEntries,
+  selectFinalTenEntries,
   selectOptions,
   selectRaffleConfigs,
   selectStoreState,
@@ -20,15 +21,22 @@ import {
 } from "../../../redux/reducer";
 import { RaffleConfigType } from "../../../interfaces/types";
 import RRR from "../../../data/images/RRR.jpg";
+import { ReactJSX, ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 
-type GridProps = {};
+type GridProps = {
+  showGridBoxes: boolean;
+  setShowGridBoxes: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-const Grid = ({}: GridProps) => {
-  const [gridBoxes, setGridBoxes] = useState(); // List of GridBox Components Rendered
+const Grid = ({ showGridBoxes, setShowGridBoxes }: GridProps) => {
+  const [gridBoxes, setGridBoxes] = useState<ReactJSXElement[]>(); // List of GridBox Components Rendered
   const activeRaffleData = useSelector(selectActiveRaffleData, {
     equalityFn: shallowEqual,
   });
   const currentRaffle = useSelector(selectCurrentRaffle);
+  const finalTenList = useSelector(selectFinalTenEntries);
+  const winners = useSelector(selectWinners);
+  const winner = winners[currentRaffle];
   const drawnEntries = useSelector(selectDrawnEntries);
   const options = useSelector(selectOptions);
   const isShuffleEnabled = useSelector(selectOptions).isShuffleEnabled; // When enabled, shuffle boxes instead of in index order
@@ -37,6 +45,7 @@ const Grid = ({}: GridProps) => {
     // Used to get number of row/columns to display boxes in
     return getGridDimensions(numEntries, options.isLandscape);
   }, [numEntries]);
+  const finalTenGridDimensions = { row: 2, column: 5 };
   const gridArea = gridDimensions.column * gridDimensions.row;
   const dummySquares = gridArea - numEntries; // Squares left to complete rectangle display
   const raffleConfig = useSelector(selectRaffleConfigs, {
@@ -44,6 +53,8 @@ const Grid = ({}: GridProps) => {
   });
   const activeRaffleConfig = raffleConfig[currentRaffle];
   const gridBoxStyle = getGridBoxStyleFromConfigs(activeRaffleConfig);
+  const dimensions =
+    finalTenList.length !== 0 ? finalTenGridDimensions : gridDimensions;
 
   // Create gridbox components for grid
   const createGridBoxes = (numBoxes: number) => {
@@ -92,9 +103,35 @@ const Grid = ({}: GridProps) => {
     return boxes;
   };
 
+  const createFinalTenGridBoxes = () => {
+    let boxes = [];
+    // Generate Boxes
+    for (let i = 0; i < 10; i++) {
+      boxes.push(
+        <Gridbox
+          gridBoxStyle={gridBoxStyle}
+          key={finalTenList?.[i] ?? i}
+          boxNumber={i}
+          name={finalTenList?.[i] ?? ""}
+          text=""
+          isEnabled={true}
+        />
+      );
+    }
+    return boxes;
+  };
+
   useEffect(() => {
+    const shouldShowGridBoxes = !!!winner;
+    setShowGridBoxes(shouldShowGridBoxes);
     setGridBoxes(createGridBoxes(numEntries));
   }, [currentRaffle]);
+
+  useEffect(() => {
+    if (finalTenList.length !== 0) {
+      setGridBoxes(createFinalTenGridBoxes());
+    }
+  }, [finalTenList]);
 
   return (
     <div
@@ -103,9 +140,10 @@ const Grid = ({}: GridProps) => {
     >
       <div
         className="grid"
-        style={{ gridTemplateColumns: `repeat(${gridDimensions.column}, 1fr)` }}
+        style={{ gridTemplateColumns: `repeat(${dimensions.column}, 1fr)` }}
       >
-        {gridBoxes}
+        {/* {gridBoxes} */}
+        {showGridBoxes ? gridBoxes : null}
       </div>
     </div>
   );

@@ -137,7 +137,7 @@ export const get2025RaffleConfigs = () => {
       boxColor: "orange",
       boxBorderColor: "black",
       boxTransparency: 1,
-      description: `Home Depot Gift Card\nValue: $500\n\n`,
+      description: `Home Depot Gift Card\n\nValue: $500\n\n`,
     },
     Soothe: {
       name: `Soothe`,
@@ -148,7 +148,7 @@ export const get2025RaffleConfigs = () => {
       boxColor: "rgb(147, 248, 255)",
       boxBorderColor: "white",
       boxTransparency: 1,
-      description: `Soothe Gift Card\nValue: $500\n\n`,
+      description: `Soothe Gift Card\n\nValue: $500\n\n`,
     },
     RRR: {
       name: `RRR`,
@@ -159,7 +159,7 @@ export const get2025RaffleConfigs = () => {
       boxBorderColor: "rgb(207, 15, 15, .5)",
       fontColor: "rgba(46, 126, 9, 1)",
       boxTransparency: 1,
-      description: `Roemerman Ranch Retreat\nValue: PRICELESS\n\n`,
+      description: `Roemerman Ranch Retreat\n\nValue: PRICELESS\n\n`,
     },
     KitchenAid: {
       name: `Kitchen Aid`,
@@ -170,7 +170,7 @@ export const get2025RaffleConfigs = () => {
       boxColor: "black",
       boxBorderColor: "silver",
       boxTransparency: 1,
-      description: `KitchenAid 5.5 Quart \nBowl-Lift Stand Mixer\n$500 Williams Sonoma Gift Card\n Value: $1000\n\n`,
+      description: `KitchenAid 5.5 Quart \nBowl-Lift Stand Mixer\n\nWilliams Sonoma\n$500 Gift Card\n\n Total Value: $1000\n\n`,
     },
     "Kamado Joe": {
       name: `Kamado Joe`,
@@ -181,7 +181,7 @@ export const get2025RaffleConfigs = () => {
       boxColor: "rgb(207, 15, 15)",
       boxBorderColor: "black",
       boxTransparency: 1,
-      description: `Kamado Joe Classic Joe II\n(includes cover)\nValue: $1600\n\n`,
+      description: `Kamado Joe Classic Joe II\n(includes cover)\n\nValue: $1600\n\n`,
     },
     "Grand Prix": {
       name: `Grand Prix`,
@@ -192,7 +192,7 @@ export const get2025RaffleConfigs = () => {
       boxColor: "rgba(108, 169, 228)",
       boxBorderColor: "rgba(0, 34, 68)",
       boxTransparency: 1,
-      description: `Indy Car Grand Prix Arlington\n2 Reserved Weekend Passes\nValue: $540\n\n`,
+      description: `Indy Car Grand Prix Arlington\n2 Reserved Weekend Passes\n\nValue: $540\n\n`,
     },
     PS5: {
       name: `PS5`,
@@ -203,7 +203,7 @@ export const get2025RaffleConfigs = () => {
       boxColor: "rgba(255,255,255)",
       boxBorderColor: "rgb(0, 111, 205)",
       boxTransparency: 1,
-      description: `PS5 Bundle\nValue: $800\n\n`,
+      description: `PS5 Bundle\n\nValue: $800\n\n`,
     },
     Nintendo: {
       name: `Nintendo`,
@@ -214,7 +214,7 @@ export const get2025RaffleConfigs = () => {
       boxColor: "rgba(231, 0, 18)",
       boxBorderColor: "white",
       boxTransparency: 1,
-      description: `Nintendo Switch 2 Bundle\nValue: $800\n\n`,
+      description: `Nintendo Switch 2 Bundle\n\nValue: $800\n\n`,
     },
     TV: {
       name: `TV`,
@@ -225,7 +225,7 @@ export const get2025RaffleConfigs = () => {
       boxColor: "rgba(110, 71, 147)",
       boxBorderColor: "rgba(201, 172, 210)",
       boxTransparency: 1,
-      description: `85" TV with Soundbar\nValue: $1500\n\n`,
+      description: `85" TV with Soundbar\n\nValue: $1500\n\n`,
     },
     Apple: {
       name: `Apple`,
@@ -236,7 +236,7 @@ export const get2025RaffleConfigs = () => {
       boxColor: "rgba(45, 228, 218)",
       boxBorderColor: "white",
       boxTransparency: 1,
-      description: `iPadAir 13" 256gb\nAirPods Pro 3\nValue: $1200\n\n`,
+      description: `iPadAir 13" 256gb\nAirPods Pro 3\n\nValue: $1200\n\n`,
     },
     Travel: {
       name: `Travel`,
@@ -247,7 +247,7 @@ export const get2025RaffleConfigs = () => {
       boxColor: "rgba(255, 0, 226)",
       boxBorderColor: "black",
       boxTransparency: 1,
-      description: `Travel Voucher - no restrictions\nValue: $2500\n\n`,
+      description: `Travel Voucher\n- No restrictions\n\nValue: $2500\n\n`,
     },
   } as RaffleConfigType;
 };
