@@ -92,25 +92,38 @@ const Header = ({
 
   return (
     <div className="header">
-      <Button variant="contained" onClick={handleStartClick}>
-        Start Raffle
-      </Button>
-      <div style={{ fontSize: "2rem", color: "white" }}>{headerText}</div>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel>Raffle</InputLabel>
-        <Select
-          id="raffle-select"
-          value={activeRaffle}
-          onChange={handleChange}
-          input={<OutlinedInput label="Raffle" />}
-          sx={{ color: "white" }}
+      <div className="header-start">
+        <Button
+          variant="contained"
+          onClick={handleStartClick}
+          sx={{ width: "100%" }}
         >
-          {getMenuOptions()}
-        </Select>
-      </FormControl>
-      <IconButton onClick={toggleOptionsMenu} sx={{ width: "10%" }}>
-        <Settings />
-      </IconButton>
+          Start Raffle
+        </Button>
+      </div>
+      <div className="header-text">
+        <div style={{ fontSize: "5rem", color: "white" }}>{activeRaffle}</div>
+        <div
+          style={{
+            fontSize: "2rem",
+            color: "white",
+            textWrapMode: "nowrap",
+          }}
+        >
+          {headerText}
+        </div>
+      </div>
+
+      <div className="header-settings">
+        <IconButton
+          onClick={toggleOptionsMenu}
+          // sx={{ border: "1px solid red" }}
+        >
+          <Settings />
+        </IconButton>
+      </div>
+
+      {/* <div className="header-actions"></div> */}
     </div>
   );
 };

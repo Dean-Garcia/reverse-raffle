@@ -72,10 +72,35 @@ root {
 .header {
   background-color: rgb(37, 37, 37);
   grid-area: header;
-  display: grid;
+  display: flex;
   grid-template-columns: 5fr 11fr 5fr 0.5fr;
   align-items: center;
   gap: 10px;
+  flex-flow: row;
+  /* border: 1px solid white; */
+}
+
+.header-text {
+  color: white;
+  font-size: 3rem;
+  width: 87%;
+  display: flex;
+  flex-flow: column;
+  /* border: 1px solid white; */
+}
+
+.header-start {
+  flex-flow: row;
+  width: 11%;
+  /* border: 1px solid white; */
+  display: flex;
+}
+
+.header-settings {
+  flex-flow: row;
+  width: 2%;
+  /* border: 1px solid white; */
+  display: flex;
 }
 
 .info-box-container {
