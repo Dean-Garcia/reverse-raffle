@@ -31,6 +31,7 @@ import {
 import OptionsScreen from "../options/OptionsScreen";
 import InfoBoxContainer from "./InfoBoxContainer";
 import { useKeyboardShortcut } from "../../../customHooks/useKeyboardShortcut";
+import { WinnerDialogBox2 } from "./WinnerDialogBox2";
 
 type PageProps = {};
 
@@ -233,7 +234,8 @@ export default function Page({}: PageProps) {
       />
       <InfoBoxContainer activeRaffle={currentRaffle} raffleData={raffleData} />
       <Grid showGridBoxes={showGridBoxes} setShowGridBoxes={setShowGridBoxes} />
-      <WinnerDialogBox
+      <WinnerDialogBox2
+        activeRaffle={currentRaffle}
         open={isWinnerDialogOpen}
         onClose={toggleWinnnerDialogBox}
         text={getWinnerText()}

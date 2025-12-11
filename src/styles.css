@@ -230,7 +230,7 @@ root {
   /* color: rgba(0,0,0,0.8); */
 }
 
-.dialog {
+.dialog-container {
   background-color: #1e1e1e;
   color: white;
   font-size: 3rem;
@@ -239,4 +239,28 @@ root {
   white-space: pre-line;
   padding: 25px 25px 25px 25px;
   /* border: 2px solid white; */
+  display: flex;
+  flex-flow: row;
+  gap: 50px;
+}
+
+.dialog-container-container {
+  background-color: #1e1e1e;
+  color: white;
+  font-size: 3rem;
+  word-wrap: normal;
+  text-align: center;
+  white-space: pre-line;
+  padding: 25px 25px 25px 25px;
+  /* border: 2px solid white; */
+  display: flex;
+  flex-flow: row;
+  gap: 50px;
+  height: 100%;
+  width: 100%;
+}
+
+.dialog-winner-text {
+  background-color: green;
+  border: 1px solid white;
 }
