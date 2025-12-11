@@ -106,21 +106,21 @@ const Header = ({
         text = "Roemerman Ranch Retreat";
         break;
       case "KitchenAid":
-        text = "KitchenAid Stand Mixer & Williams Sonoma $500 Gift Card";
+        text = "KitchenAid Bundle";
         fontSize = "3rem";
         break;
       case "Kamado Joe":
         text = "Kamado Joe Classic Joe II";
         break;
       case "Grand Prix":
-        text = "Indy Car Grand Prix Arlington - 2 Reserved Weekend Passes";
+        text = "Indy Car Grand Prix Arlington";
         fontSize = "3rem";
         break;
       case "PS5":
         text = "PS5 Bundle";
         break;
       case "Nintendo":
-        text = "Nintendo Bundle";
+        text = "Nintendo Switch 2 Bundle";
         break;
       case "TV":
         text = `85" TV with Soundbar`;
@@ -178,7 +178,7 @@ const Header = ({
       <div className="header-settings">
         <IconButton
           onClick={toggleOptionsMenu}
-          // sx={{ border: "1px solid red" }}
+        // sx={{ border: "1px solid red" }}
         >
           <Settings />
         </IconButton>
