@@ -34,7 +34,7 @@ import { useKeyboardShortcut } from "../../../customHooks/useKeyboardShortcut";
 
 type PageProps = {};
 
-export default function Page({}: PageProps) {
+export default function Page({ }: PageProps) {
   const dispatch = useDispatch();
   const currentRaffle = useSelector(selectCurrentRaffle);
   const activeRaffleData = useSelector(selectActiveRaffleData, {
@@ -155,11 +155,13 @@ export default function Page({}: PageProps) {
 
         // remove winner from file data
         let newCurrentFileData = [...currentFileData];
-        const winnerName = newActiveRaffleData[0].slice(0, -2);
+        console.log(newActiveRaffleData[0].slice(0, -2), newActiveRaffleData[0].split('-')[0])
+        const winnerName = newActiveRaffleData[0].split('-')[0];
         const winnerIndex = getFileArrayIndexWithName(
           winnerName,
           newCurrentFileData
         );
+        console.log('winnerName', winnerName, 'winnerIndex', winnerIndex)
         newCurrentFileData.splice(winnerIndex, 1);
         const newRaffleData = getRaffleEntries(
           newCurrentFileData,
