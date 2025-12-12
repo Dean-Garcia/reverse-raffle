@@ -34,7 +34,7 @@ import { useKeyboardShortcut } from "../../../customHooks/useKeyboardShortcut";
 
 type PageProps = {};
 
-export default function Page({ }: PageProps) {
+export default function Page({}: PageProps) {
   const dispatch = useDispatch();
   const currentRaffle = useSelector(selectCurrentRaffle);
   const activeRaffleData = useSelector(selectActiveRaffleData, {
@@ -83,6 +83,11 @@ export default function Page({ }: PageProps) {
     let newDrawnEntries = [...drawnEntries];
     let newActiveRaffleData = [...activeRaffleData];
 
+    if (newActiveRaffleData.length === 0) {
+      console.error("No Entries in Raffle!");
+      return;
+    }
+
     // Only One Entry in Raffle, Pick Winner Immediately
     if (newActiveRaffleData.length === 1) {
       let winnerPayload = { [currentRaffle]: newActiveRaffleData[0] };
@@ -111,6 +116,11 @@ export default function Page({ }: PageProps) {
         setIsWinnerDialogOpen(true);
       }, 1000);
       return;
+    }
+
+    // Entries started with less than 10. Reveal names.
+    if (newActiveRaffleData.length < 10) {
+      dispatch(updateFinalTenEntries(newActiveRaffleData));
     }
 
     let delay = 100;
@@ -155,13 +165,12 @@ export default function Page({ }: PageProps) {
 
         // remove winner from file data
         let newCurrentFileData = [...currentFileData];
-        console.log(newActiveRaffleData[0].slice(0, -2), newActiveRaffleData[0].split('-')[0])
-        const winnerName = newActiveRaffleData[0].split('-')[0];
+        const winnerName = newActiveRaffleData[0].split("-")[0];
         const winnerIndex = getFileArrayIndexWithName(
           winnerName,
           newCurrentFileData
         );
-        console.log('winnerName', winnerName, 'winnerIndex', winnerIndex)
+        console.log("winnerName", winnerName, "winnerIndex", winnerIndex);
         newCurrentFileData.splice(winnerIndex, 1);
         const newRaffleData = getRaffleEntries(
           newCurrentFileData,
