@@ -104,14 +104,16 @@ const Grid = ({ showGridBoxes, setShowGridBoxes }: GridProps) => {
 
   const createFinalTenGridBoxes = () => {
     let boxes = [];
+    console.log("finalTen", finalTenList);
     // Generate Boxes
     for (let i = 0; i < 10; i++) {
       let name = finalTenList?.[i];
+      console.log("name", name);
       if (name) {
         boxes.push(
           <Gridbox
             gridBoxStyle={gridBoxStyle}
-            key={name + i}
+            key={name}
             boxNumber={i}
             name={name}
             text=""
