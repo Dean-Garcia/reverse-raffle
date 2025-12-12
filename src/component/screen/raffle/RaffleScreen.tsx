@@ -226,11 +226,50 @@ export default function Page({}: PageProps) {
     if (!currentRaffle || !winners[currentRaffle]) return "No Winner Yet";
     let winner = winners[currentRaffle];
     let winnerName = winner?.split("-")[0];
+    let raffleText;
+    switch (currentRaffle) {
+      case "Home Depot":
+        raffleText = "Home Depot $500 Gift Card";
+        break;
+      case "Soothe":
+        raffleText = "Soothe $500 Gift Card";
+        break;
+      case "RRR":
+        raffleText = "Roemerman Ranch Retreat";
+        break;
+      case "KitchenAid":
+        raffleText = "KitchenAid Bundle";
+        break;
+      case "Kamado Joe":
+        raffleText = "Kamado Joe Classic Joe II";
+        break;
+      case "Grand Prix":
+        raffleText = "Indy Car Grand Prix Arlington Tickets";
+        break;
+      case "PS5":
+        raffleText = "PS5 Bundle";
+        break;
+      case "Nintendo":
+        raffleText = "Nintendo Switch 2 Bundle";
+        break;
+      case "TV":
+        raffleText = `85" TV with Soundbar`;
+        break;
+      case "Apple":
+        raffleText = `13" iPad Air & AirPods Pro 3`;
+        break;
+      case "Travel":
+        raffleText = `$2500 Travel Voucher`;
+        break;
+      default:
+        raffleText = "No Raffle Selected";
+    }
     return `Congratulations to
 
      ${winnerName} 
     
-     for winning ${currentRaffle}!
+     for winning the      
+     ${raffleText}!
      `;
   };
 

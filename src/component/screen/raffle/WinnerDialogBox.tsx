@@ -12,7 +12,13 @@ export function WinnerDialogBox({ onClose, text, open }: SimpleDialogProps) {
   };
 
   return (
-    <Dialog className="dialog" onClose={handleClose} open={open}>
+    <Dialog
+      className="dialog"
+      onClose={handleClose}
+      open={open}
+      fullWidth={true}
+      maxWidth={"md"}
+    >
       <div className="dialog">{text}</div>
     </Dialog>
   );
