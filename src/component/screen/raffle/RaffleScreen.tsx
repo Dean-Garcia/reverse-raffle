@@ -94,7 +94,7 @@ export default function Page({}: PageProps) {
 
       // remove winner from file data
       let newCurrentFileData = [...currentFileData];
-      const winnerName = newActiveRaffleData[0].slice(0, -2);
+      const winnerName = newActiveRaffleData[0].split("-")[0];
       const winnerIndex = getFileArrayIndexWithName(
         winnerName,
         newCurrentFileData
@@ -225,7 +225,7 @@ export default function Page({}: PageProps) {
   const getWinnerText = () => {
     if (!currentRaffle || !winners[currentRaffle]) return "No Winner Yet";
     let winner = winners[currentRaffle];
-    let winnerName = winner.slice(0, -2);
+    let winnerName = winner?.split("-")[0];
     return `Congratulations to
 
      ${winnerName} 
