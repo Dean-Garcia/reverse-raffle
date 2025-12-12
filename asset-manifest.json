@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/reverse-raffle/static/css/main.21874f72.css",
-    "main.js": "/reverse-raffle/static/js/main.0f915b3a.js",
+    "main.css": "/reverse-raffle/static/css/main.90c8a65b.css",
+    "main.js": "/reverse-raffle/static/js/main.8769a90c.js",
     "static/media/kitchenAid.png": "/reverse-raffle/static/media/kitchenAid.11d298c169fee3491288.png",
     "static/media/homeDepot.png": "/reverse-raffle/static/media/homeDepot.8e39a0a0c7e957dd6bb9.png",
     "static/media/soothe.png": "/reverse-raffle/static/media/soothe.eed1b1ee341d6a54bbc5.png",
@@ -14,11 +14,11 @@
     "static/media/kamadoJoe.png": "/reverse-raffle/static/media/kamadoJoe.c823aee99782cbc799fb.png",
     "static/media/RRR.jpg": "/reverse-raffle/static/media/RRR.5d727ebf4cb2674dcdcb.jpg",
     "index.html": "/reverse-raffle/index.html",
-    "main.21874f72.css.map": "/reverse-raffle/static/css/main.21874f72.css.map",
-    "main.0f915b3a.js.map": "/reverse-raffle/static/js/main.0f915b3a.js.map"
+    "main.90c8a65b.css.map": "/reverse-raffle/static/css/main.90c8a65b.css.map",
+    "main.8769a90c.js.map": "/reverse-raffle/static/js/main.8769a90c.js.map"
   },
   "entrypoints": [
-    "static/css/main.21874f72.css",
-    "static/js/main.0f915b3a.js"
+    "static/css/main.90c8a65b.css",
+    "static/js/main.8769a90c.js"
   ]
 }
