@@ -244,7 +244,7 @@ export default function Page({}: PageProps) {
         raffleText = "Kamado Joe Classic Joe II";
         break;
       case "Grand Prix":
-        raffleText = "Indy Car Grand Prix Arlington Tickets";
+        raffleText = "Indy Car Grand Prix Arlington Passes";
         break;
       case "PS5":
         raffleText = "PS5 Bundle";
