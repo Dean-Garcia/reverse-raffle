@@ -6,10 +6,16 @@ import readXlsxFile from "read-excel-file";
 import {
   getDefaultRaffleConfigs,
   getRaffleEntries,
+  parseConfigFileToStoreFormat,
+  parseEntryDataToStoreFormat,
+  parseEntryFileToStoreFormat,
 } from "../../../../utilities/utility";
 import { FileData } from "../../../../interfaces/types";
 import { useDispatch, useSelector } from "react-redux";
-import { updateStore } from "../../../../redux/actions/actions";
+import {
+  updateRaffleConfigs,
+  updateStore,
+} from "../../../../redux/actions/actions";
 import RaffleConfig from "./RaffleConfig";
 import { selectStoreState } from "../../../../redux/reducer";
 
@@ -19,6 +25,7 @@ type ButtonSettingComponent = {
   buttonText: string;
   handleClick: () => void;
   isUploadFile: boolean;
+  type?: "entries" | "config";
 };
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -38,38 +45,26 @@ export default function ButtonSetting({
   settingExplanationText,
   buttonText,
   handleClick,
+  type,
 }: ButtonSettingComponent) {
   const dispatch = useDispatch();
-  const handleFile = (event: any) => {
-    readXlsxFile(event.target.files[0]).then((data) => {
-      let newFileData = data.slice(1);
-      let newRaffleList = data[0].slice(1);
-      let newRaffleData = getRaffleEntries(
-        newFileData as FileData,
-        newRaffleList as string[]
-      );
-
-      // let raffleObj = {};
-      // newRaffleList.map((raffle, index) => {
-      //   console.log("raffleName", raffle);
-      //   raffleObj[raffle as string] = getDefaultRaffleConfigs(
-      //     raffle,
-      //     index + 1
-      //   );
-      // });
-
-      // Does not create new configs. Uses from default state for now.
-      let newStoreData = {
-        originalFileData: newFileData as FileData,
-        currentFileData: newFileData as FileData,
-        currentRaffle: newRaffleList[0] as string,
-        activeRaffleData: newRaffleData[newRaffleList[0] as string],
-        raffleNameList: newRaffleList as string[],
-        raffleData: newRaffleData,
-      };
-
-      dispatch(updateStore(newStoreData));
-    });
+  const handleFile = async (event: any) => {
+    let data;
+    switch (type) {
+      case "entries":
+        data = await parseEntryFileToStoreFormat(event);
+        dispatch(updateStore(data));
+        break;
+      case "config":
+        data = await parseConfigFileToStoreFormat(event);
+        dispatch(updateRaffleConfigs(data));
+        // console.log("data", data);
+        break;
+      default:
+        console.error(
+          "Something went wrong with the ButtonSetting handleFile()"
+        );
+    }
   };
   return (
     <div style={{ display: "flex", flexFlow: "column", padding: "10px" }}>

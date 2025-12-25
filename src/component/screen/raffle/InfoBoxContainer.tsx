@@ -38,6 +38,7 @@ export const InfoBoxContainer = ({ activeRaffle, raffleData }) => {
     for (let i = 0; i < textArray.length; i++) {
       infoBoxArray.push(
         <InfoBoxAccordion
+          key={textArray[i]}
           name={textArray[i]}
           count={lengthArray[i]}
           expanded={expanded}

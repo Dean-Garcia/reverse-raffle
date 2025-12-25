@@ -54,6 +54,16 @@ root {
   /* border: 1px solid white; */
 }
 
+.flex-column {
+  display: flex;
+  flex-flow: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-flow: row;
+}
+
 .options-raffle-config {
   background-color: rgb(37, 37, 37);
   color: white;

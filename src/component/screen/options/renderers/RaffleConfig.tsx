@@ -122,7 +122,7 @@ export default function RaffleConfig({
             borderRadius: "1rem",
           }}
         >
-          <div>
+          <div className="flex-row" style={{}}>
             <div
               className={"box-enabled grid-box-preview"}
               style={{
@@ -132,7 +132,29 @@ export default function RaffleConfig({
                 opacity: boxTransparency,
               }}
             >
-              0232
+              12
+            </div>
+            <div
+              className={"box-enabled grid-box-preview"}
+              style={{
+                backgroundColor: boxColor,
+                color: fontColor,
+                border: `1px solid ${boxBorderColor}`,
+                opacity: boxTransparency,
+              }}
+            >
+              13
+            </div>
+            <div
+              className={"box-enabled grid-box-preview"}
+              style={{
+                backgroundColor: boxColor,
+                color: fontColor,
+                border: `1px solid ${boxBorderColor}`,
+                opacity: boxTransparency,
+              }}
+            >
+              14
             </div>
             {/* <div className={"box-disabled grid-box-preview"}>023</div> */}
           </div>
