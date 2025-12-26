@@ -75,6 +75,8 @@ export default function RaffleConfig({
             buttonText="Upload Background"
             handleClick={handleChange}
             isUploadFile={true}
+            raffleName={raffleName}
+            type={"backgroundImage"}
           />
           {/* <TextSetting
             settingTitle="Font"

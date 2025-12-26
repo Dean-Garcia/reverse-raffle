@@ -48,6 +48,18 @@ export const reducer = (state = defaultState, action: any) => {
       return { ...state, isRaffleActive: payload };
     case Actions.UPDATE_OPTIONS:
       return { ...state, options: { ...state.options, ...payload } };
+    case Actions.UPDATE_BACKGROUND_IMAGE:
+      const { raffleName, backgroundImage } = payload;
+      return {
+        ...state,
+        raffleConfigs: {
+          ...state.raffleConfigs,
+          [raffleName]: {
+            ...state.raffleConfigs[raffleName],
+            backgroundImage: backgroundImage,
+          },
+        },
+      };
     case Actions.UPDATE_WINNERS:
       return { ...state, winners: { ...state.winners, ...payload } };
     case Actions.UPDATE_STORE:

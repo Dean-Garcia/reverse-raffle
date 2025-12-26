@@ -20,6 +20,7 @@ export const Actions = {
   UPDATE_OPTIONS: "update-options",
   UPDATE_IS_RAFFLE_ACTIVE: "update-is-raffle-active",
   UPDATE_WINNERS: "update-winners",
+  UPDATE_BACKGROUND_IMAGE: "update-background-image",
 };
 
 export const updateOriginalFileData = (payload: FileData): DefaultPayload => ({
@@ -46,6 +47,14 @@ export const updateRaffleConfigs = (
   payload: RaffleConfigType
 ): DefaultPayload => ({
   type: Actions.UPDATE_RAFFLE_CONFIGS,
+  payload: payload,
+});
+
+export const updateBackgroundImage = (payload: {
+  raffleName: string;
+  backgroundImage: string;
+}): DefaultPayload => ({
+  type: Actions.UPDATE_BACKGROUND_IMAGE,
   payload: payload,
 });
 

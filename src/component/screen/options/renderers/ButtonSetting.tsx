@@ -13,6 +13,7 @@ import {
 import { FileData } from "../../../../interfaces/types";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  updateBackgroundImage,
   updateRaffleConfigs,
   updateStore,
 } from "../../../../redux/actions/actions";
@@ -25,7 +26,8 @@ type ButtonSettingComponent = {
   buttonText: string;
   handleClick: () => void;
   isUploadFile: boolean;
-  type?: "entries" | "config";
+  raffleName?: string;
+  type?: "entries" | "config" | "backgroundImage";
 };
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -46,6 +48,7 @@ export default function ButtonSetting({
   buttonText,
   handleClick,
   type,
+  raffleName,
 }: ButtonSettingComponent) {
   const dispatch = useDispatch();
   const handleFile = async (event: any) => {
@@ -58,6 +61,15 @@ export default function ButtonSetting({
       case "config":
         data = await parseConfigFileToStoreFormat(event);
         dispatch(updateRaffleConfigs(data));
+        // console.log("data", data);
+        break;
+      case "backgroundImage":
+        let imgSrc = URL.createObjectURL(event.target.files[0]);
+        const payloadObject = {
+          raffleName: raffleName as string,
+          backgroundImage: imgSrc,
+        };
+        dispatch(updateBackgroundImage(payloadObject));
         // console.log("data", data);
         break;
       default:
